@@ -1,0 +1,460 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\commands\\updateorganizationcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\commands\\updateorganizationcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\queries\\readorganizationmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\queries\\readorganizationmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\queries\\readallpeoplequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\queries\\readallpeoplequery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\queries\\readallorganizationsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\queries\\readallorganizationsquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\queries\\readallorganizationsmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\queries\\readallorganizationsmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\commands\\createorupdatepersonvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\commands\\createorupdatepersonvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\commands\\createorupdatepersonmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\commands\\createorupdatepersonmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\infrastructure\\organizationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\infrastructure\\organizationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\gdprrecord.server.feature.organization.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\gdprrecord.server.feature.organization.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85363260-D4DF-4F38-B520-770C279EE4FB}|src\\GdprRecord.Server\\GdprRecord.Server.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server\\gdprrecord.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{85363260-D4DF-4F38-B520-770C279EE4FB}|src\\GdprRecord.Server\\GdprRecord.Server.csproj|solutionrelative:src\\gdprrecord.server\\gdprrecord.server.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99E97933-3E7B-4E8D-832C-88155D5834E5}|src\\GdprRecord.Server.Feature.ProcessingActivity\\GdprRecord.Server.Feature.ProcessingActivity.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.processingactivity\\processingactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99E97933-3E7B-4E8D-832C-88155D5834E5}|src\\GdprRecord.Server.Feature.ProcessingActivity\\GdprRecord.Server.Feature.ProcessingActivity.csproj|solutionrelative:src\\gdprrecord.server.feature.processingactivity\\processingactivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\queries\\readorganizationquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\queries\\readorganizationquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\commands\\updateorganizationmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\commands\\updateorganizationmapperprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\controllers\\organizationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\controllers\\organizationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\model\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\model\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\infrastructure\\organizationdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\infrastructure\\organizationdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\migrations\\20240527072755_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\migrations\\20240527072755_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA27841A-9983-474B-A191-E189FCC176ED}|Solution Items{BA27841A-9983-474B-A191-E189FCC176ED}|C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BA27841A-9983-474B-A191-E189FCC176ED}|Solution Items{BA27841A-9983-474B-A191-E189FCC176ED}|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\controllers\\peoplecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\commands\\createpersoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\commands\\createpersoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\commands\\createorupdatepersoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\commands\\createorupdatepersoncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85363260-D4DF-4F38-B520-770C279EE4FB}|src\\GdprRecord.Server\\GdprRecord.Server.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{85363260-D4DF-4F38-B520-770C279EE4FB}|src\\GdprRecord.Server\\GdprRecord.Server.csproj|solutionrelative:src\\gdprrecord.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server.feature.organization\\iorganizationfeature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7F6B09FE-F5D3-4E1B-9900-80CEE8D573FE}|src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj|solutionrelative:src\\gdprrecord.server.feature.organization\\iorganizationfeature.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{85363260-D4DF-4F38-B520-770C279EE4FB}|src\\GdprRecord.Server\\GdprRecord.Server.csproj|c:\\users\\yvanrazafindramanana\\source\\tests\\gdpr\\api\\src\\gdprrecord.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{85363260-D4DF-4F38-B520-770C279EE4FB}|src\\GdprRecord.Server\\GdprRecord.Server.csproj|solutionrelative:src\\gdprrecord.server\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 283,
+          "SelectedChildIndex": 24,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ReadOrganizationMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationMapperProfile.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationMapperProfile.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationMapperProfile.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationMapperProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T15:56:05.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Organization.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Model\\Organization.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Model\\Organization.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Model\\Organization.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Model\\Organization.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAqwBEAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:21:31.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrganizationContext.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationContext.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationContext.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationContext.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationContext.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAqwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:28:34.602Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "OrganizationDbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationDbInitializer.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationDbInitializer.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationDbInitializer.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Infrastructure\\OrganizationDbInitializer.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAqwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:28:40.874Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateOrUpdatePersonMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonMapperProfile.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonMapperProfile.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonMapperProfile.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonMapperProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:55:45.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "20240527072755_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Migrations\\20240527072755_InitialCreate.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Migrations\\20240527072755_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Migrations\\20240527072755_InitialCreate.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Migrations\\20240527072755_InitialCreate.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAAAAAkAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:27:58.902Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2024-05-27T07:23:09.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PeopleController.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Controllers\\PeopleController.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Controllers\\PeopleController.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Controllers\\PeopleController.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Controllers\\PeopleController.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAuwDoAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:58:15.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProcessingActivity.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.ProcessingActivity\\ProcessingActivity.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.ProcessingActivity\\ProcessingActivity.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.ProcessingActivity\\ProcessingActivity.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.ProcessingActivity\\ProcessingActivity.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAmwCcAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:51:05.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GdprRecord.Server.csproj",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server\\GdprRecord.Server.csproj",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server\\GdprRecord.Server.csproj",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server\\GdprRecord.Server.csproj",
+              "RelativeToolTip": "src\\GdprRecord.Server\\GdprRecord.Server.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-27T06:47:39.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GdprRecord.Server.Feature.Organization.csproj",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\GdprRecord.Server.Feature.Organization.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-05-27T06:47:40.19Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CreateOrUpdatePersonValidator.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonValidator.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonValidator.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonValidator.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T15:43:45.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ReadAllOrganizationsQuery.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsQuery.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsQuery.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsQuery.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsQuery.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAYwCIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:49:04.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UpdateOrganizationCommand.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationCommand.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationCommand.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationCommand.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationCommand.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAADgvxkAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:08:24.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReadAllOrganizationsMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsMapperProfile.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsMapperProfile.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsMapperProfile.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllOrganizationsMapperProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T15:41:43.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ReadAllPeopleQuery.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllPeopleQuery.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllPeopleQuery.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllPeopleQuery.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadAllPeopleQuery.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T15:43:05.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ReadOrganizationQuery.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationQuery.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationQuery.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationQuery.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Queries\\ReadOrganizationQuery.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAjwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:07:34.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UpdateOrganizationMapperProfile.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationMapperProfile.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationMapperProfile.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationMapperProfile.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Commands\\UpdateOrganizationMapperProfile.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:52:18.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "OrganizationsController.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Controllers\\OrganizationsController.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Controllers\\OrganizationsController.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Controllers\\OrganizationsController.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Controllers\\OrganizationsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T07:48:40.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CreatePersonCommand.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreatePersonCommand.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreatePersonCommand.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreatePersonCommand.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreatePersonCommand.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwA8AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:56:57.329Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CreateOrUpdatePersonCommand.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonCommand.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonCommand.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonCommand.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\Commands\\CreateOrUpdatePersonCommand.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAwAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:56:05.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IOrganizationFeature.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\IOrganizationFeature.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server.Feature.Organization\\IOrganizationFeature.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server.Feature.Organization\\IOrganizationFeature.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server.Feature.Organization\\IOrganizationFeature.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAQwBEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:52:39.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server\\Program.cs",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server\\Program.cs",
+              "RelativeToolTip": "src\\GdprRecord.Server\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T06:49:46.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\GdprRecord.Server\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\YvanRAZAFINDRAMANANA\\source\\tests\\gdpr\\api\\src\\GdprRecord.Server\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\GdprRecord.Server\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-27T06:48:42.851Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
