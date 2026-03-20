@@ -10,7 +10,7 @@ internal record ReadAllPeopleResponse(ICollection<Model.Person> People);
 
 internal class ReadAllPeopleQueryHandler(OrganizationContext database) : IQueryHandler<ReadAllPeopleQuery, ReadAllPeopleResponse>
 {
-	public async Task<Result<ReadAllPeopleResponse>> Handle(ReadAllPeopleQuery query, CancellationToken cancellationToken)
+	public async ValueTask<Result<ReadAllPeopleResponse>> Handle(ReadAllPeopleQuery query, CancellationToken cancellationToken)
 	{
 		var people = await database.People
 			.AsNoTracking()

@@ -26,7 +26,7 @@ internal class CreateOrUpdatePersonCommandHandler(
 	ILogger<CreateOrUpdatePersonCommandHandler> logger
 	) : ICommandHandler<CreateOrUpdatePersonCommand, CreateOrUpdatePersonResponse>
 {
-	public async Task<Result<CreateOrUpdatePersonResponse>> Handle(CreateOrUpdatePersonCommand command, CancellationToken cancellationToken)
+	public async ValueTask<Result<CreateOrUpdatePersonResponse>> Handle(CreateOrUpdatePersonCommand command, CancellationToken cancellationToken)
 	{
 		using var transaction = await database.Database.BeginTransactionAsync(cancellationToken);
 

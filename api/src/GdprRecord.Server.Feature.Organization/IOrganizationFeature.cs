@@ -5,6 +5,7 @@ using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Mediator;
 
 namespace GdprRecord.Server.Feature.Organization;
 
@@ -14,8 +15,7 @@ public static class IServicesCollectionExtensions
 {
 	public static IServiceCollection AddOrganizationFeature(this IServiceCollection services)
 	{
-		services.AddMediatR(
-			cfg => cfg.RegisterServicesFromAssembly(typeof(IOrganizationFeature).Assembly));
+		services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
 
 		TypeAdapterConfig.GlobalSettings.Scan(typeof(IOrganizationFeature).Assembly);
 

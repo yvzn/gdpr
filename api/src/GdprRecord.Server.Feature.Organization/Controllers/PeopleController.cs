@@ -1,6 +1,6 @@
 using GdprRecord.Server.Feature.Organization.Commands;
 using GdprRecord.Server.Feature.Organization.Queries;
-using MediatR;
+using Mediator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GdprRecord.Server.Feature.Organization.Controllers;

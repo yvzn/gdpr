@@ -20,7 +20,7 @@ internal class CreateOrUpdateOrganizationCommandHandler(
 	ILogger<CreateOrUpdateOrganizationCommandHandler> logger
 	) : ICommandHandler<UpdateOrganizationCommand, UpdateOrganizationResponse>
 {
-	public async Task<Result<UpdateOrganizationResponse>> Handle(UpdateOrganizationCommand command, CancellationToken cancellationToken)
+	public async ValueTask<Result<UpdateOrganizationResponse>> Handle(UpdateOrganizationCommand command, CancellationToken cancellationToken)
 	{
 		using var transaction = await database.Database.BeginTransactionAsync(cancellationToken);
 

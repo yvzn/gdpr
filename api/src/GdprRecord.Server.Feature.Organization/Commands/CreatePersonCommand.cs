@@ -21,7 +21,7 @@ internal class CreatePersonCommandHandler(
 	ILogger<CreatePersonCommandHandler> logger
 	) : ICommandHandler<CreatePersonCommand, CreatePersonResponse>
 {
-	public async Task<Result<CreatePersonResponse>> Handle(CreatePersonCommand command, CancellationToken cancellationToken)
+	public async ValueTask<Result<CreatePersonResponse>> Handle(CreatePersonCommand command, CancellationToken cancellationToken)
 	{
 		try
 		{

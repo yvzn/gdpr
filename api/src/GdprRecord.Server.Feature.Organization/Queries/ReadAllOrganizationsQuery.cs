@@ -20,7 +20,7 @@ internal class ReadAllOrganizationsQueryHandler(
 	OrganizationContext database
 	) : IQueryHandler<ReadAllOrganizationsQuery, ReadAllOrganizationsResponse>
 {
-	public async Task<Result<ReadAllOrganizationsResponse>> Handle(ReadAllOrganizationsQuery query, CancellationToken cancellationToken)
+	public async ValueTask<Result<ReadAllOrganizationsResponse>> Handle(ReadAllOrganizationsQuery query, CancellationToken cancellationToken)
 	{
 		var organizations = await database.Organizations
 			.AsNoTracking()
