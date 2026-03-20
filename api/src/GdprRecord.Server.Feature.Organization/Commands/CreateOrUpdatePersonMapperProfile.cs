@@ -1,12 +1,12 @@
-using AutoMapper;
+using Mapster;
 
 namespace GdprRecord.Server.Feature.Organization.Commands;
 
-public class CreateOrUpdatePersonMapperProfile : Profile
+public class CreateOrUpdatePersonMapperProfile : IRegister
 {
-	public CreateOrUpdatePersonMapperProfile() : base()
+	public void Register(TypeAdapterConfig config)
 	{
-		CreateMap<CreatePersonCommand, Model.Person>();
-		CreateMap<CreateOrUpdatePersonCommand, Model.Person>();
+		config.NewConfig<CreatePersonCommand, Model.Person>();
+		config.NewConfig<CreateOrUpdatePersonCommand, Model.Person>();
 	}
 }

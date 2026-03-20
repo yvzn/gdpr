@@ -1,5 +1,5 @@
-using AutoMapper;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -23,7 +23,6 @@ public record CreateOrUpdatePersonCommand(
 
 internal class CreateOrUpdatePersonCommandHandler(
 	OrganizationContext database,
-	IMapper mapper,
 	ILogger<CreateOrUpdatePersonCommandHandler> logger
 	) : ICommandHandler<CreateOrUpdatePersonCommand, CreateOrUpdatePersonResponse>
 {
@@ -40,13 +39,13 @@ internal class CreateOrUpdatePersonCommandHandler(
 
 			if (existingPerson is null)
 			{
-				var newPerson = mapper.Map<Model.Person>(command);
+				var newPerson = command.Adapt<Model.Person>();
 				await database.People.AddAsync(newPerson, cancellationToken);
 				PersonId = () => newPerson.Id;
 			}
 			else
 			{
-				mapper.Map(command, existingPerson);
+				command.Adapt(existingPerson);
 			}
 
 			await database.SaveChangesAsync(cancellationToken);

@@ -1,5 +1,5 @@
-using AutoMapper;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
+using Mapster;
 using Microsoft.Extensions.Logging;
 
 namespace GdprRecord.Server.Feature.Organization.Commands;
@@ -18,7 +18,6 @@ public record CreatePersonCommand(
 
 internal class CreatePersonCommandHandler(
 	OrganizationContext database,
-	IMapper mapper,
 	ILogger<CreatePersonCommandHandler> logger
 	) : ICommandHandler<CreatePersonCommand, CreatePersonResponse>
 {
@@ -26,7 +25,7 @@ internal class CreatePersonCommandHandler(
 	{
 		try
 		{
-			var newPerson = mapper.Map<Model.Person>(command);
+			var newPerson = command.Adapt<Model.Person>();
 			await database.People.AddAsync(newPerson, cancellationToken);
 
 			await database.SaveChangesAsync(cancellationToken);

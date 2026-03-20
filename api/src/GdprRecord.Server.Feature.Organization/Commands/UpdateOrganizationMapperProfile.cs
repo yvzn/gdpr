@@ -1,21 +1,21 @@
-using AutoMapper;
+using Mapster;
 using GdprRecord.Server.Feature.Organization.Queries;
 
 namespace GdprRecord.Server.Feature.Organization.Commands;
 
-public class UpdateOrganizationMapperProfile : Profile
+public class UpdateOrganizationMapperProfile : IRegister
 {
-	public UpdateOrganizationMapperProfile()
+	public void Register(TypeAdapterConfig config)
 	{
-		CreateMap<UpdateOrganizationCommand, Model.Organization>()
-			.ForMember(dest => dest.ControllerId, opt => opt.Condition(src => IsValidPersonId(src.ControllerId)))
-			.ForMember(dest => dest.JointControllerId, opt => opt.Condition(src => IsValidPersonId(src.JointControllerId)))
-			.ForMember(dest => dest.ControllersRepresentativeId, opt => opt.Condition(src => IsValidPersonId(src.ControllersRepresentativeId)))
-			.ForMember(dest => dest.DataProtectionOfficerId, opt => opt.Condition(src => IsValidPersonId(src.DataProtectionOfficerId)));
+		config.NewConfig<UpdateOrganizationCommand, Model.Organization>()
+			.IgnoreIf((src, dest) => !IsValidPersonId(src.ControllerId), dest => dest.ControllerId)
+			.IgnoreIf((src, dest) => !IsValidPersonId(src.JointControllerId), dest => dest.JointControllerId)
+			.IgnoreIf((src, dest) => !IsValidPersonId(src.ControllersRepresentativeId), dest => dest.ControllersRepresentativeId)
+			.IgnoreIf((src, dest) => !IsValidPersonId(src.DataProtectionOfficerId), dest => dest.DataProtectionOfficerId);
 
-		static bool IsValidPersonId(int? maybeId)
-			=> maybeId.HasValue && maybeId.Value > 0;
-
-		CreateMap<Model.Organization, ReadOrganizationResponse>();
+		config.NewConfig<Model.Organization, ReadOrganizationResponse>();
 	}
+
+	private static bool IsValidPersonId(int? maybeId)
+		=> maybeId.HasValue && maybeId.Value > 0;
 }

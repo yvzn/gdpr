@@ -1,6 +1,5 @@
-
-using AutoMapper;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace GdprRecord.Server.Feature.Organization.Queries;
@@ -18,8 +17,7 @@ internal record Organization(
 	int? DataProtectionOfficerId);
 
 internal class ReadAllOrganizationsQueryHandler(
-	OrganizationContext database,
-	IMapper mapper
+	OrganizationContext database
 	) : IQueryHandler<ReadAllOrganizationsQuery, ReadAllOrganizationsResponse>
 {
 	public async Task<Result<ReadAllOrganizationsResponse>> Handle(ReadAllOrganizationsQuery query, CancellationToken cancellationToken)
@@ -29,6 +27,6 @@ internal class ReadAllOrganizationsQueryHandler(
 			.ToListAsync(cancellationToken);
 
 		return new ReadAllOrganizationsResponse(
-			mapper.Map<ICollection<Organization>>(organizations));
+			organizations.Adapt<ICollection<Organization>>());
 	}
 }

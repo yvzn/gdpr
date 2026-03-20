@@ -1,5 +1,5 @@
-using AutoMapper;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace GdprRecord.Server.Feature.Organization.Queries;
@@ -15,8 +15,7 @@ public record ReadOrganizationResponse(
 	int? DataProtectionOfficerId);
 
 internal class ReadOrganizationQueryHandler(
-	OrganizationContext database,
-	IMapper mapper
+	OrganizationContext database
 	) : IQueryHandler<ReadOrganizationQuery, ReadOrganizationResponse>
 {
 	public async Task<Result<ReadOrganizationResponse>> Handle(ReadOrganizationQuery request, CancellationToken cancellationToken)
@@ -28,6 +27,6 @@ internal class ReadOrganizationQueryHandler(
 		{
 			return Error.NotFound;
 		}
-		return mapper.Map<ReadOrganizationResponse>(organization);
+		return organization.Adapt<ReadOrganizationResponse>();
 	}
 }

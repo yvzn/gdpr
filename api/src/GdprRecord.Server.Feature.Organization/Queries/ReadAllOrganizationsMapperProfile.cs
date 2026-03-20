@@ -1,12 +1,11 @@
-
-using AutoMapper;
+using Mapster;
 
 namespace GdprRecord.Server.Feature.Organization.Queries;
 
-internal class ReadAllOrganizationsMapperProfile : Profile
+internal class ReadAllOrganizationsMapperProfile : IRegister
 {
-	public ReadAllOrganizationsMapperProfile(): base()
+	public void Register(TypeAdapterConfig config)
 	{
-		CreateMap<Model.Organization, Organization>();
+		config.NewConfig<Model.Organization, Organization>();
 	}
 }

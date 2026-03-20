@@ -1,5 +1,5 @@
-using AutoMapper;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -17,7 +17,6 @@ public record UpdateOrganizationCommand(
 
 internal class CreateOrUpdateOrganizationCommandHandler(
 	OrganizationContext database,
-	IMapper mapper,
 	ILogger<CreateOrUpdateOrganizationCommandHandler> logger
 	) : ICommandHandler<UpdateOrganizationCommand, UpdateOrganizationResponse>
 {
@@ -37,7 +36,7 @@ internal class CreateOrUpdateOrganizationCommandHandler(
 				return Error.NotFound;
 			}
 
-			mapper.Map(command, existingOrganization);
+			command.Adapt(existingOrganization);
 
 			await database.SaveChangesAsync(cancellationToken);
 

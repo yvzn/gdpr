@@ -1,6 +1,7 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
+using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,8 +17,7 @@ public static class IServicesCollectionExtensions
 		services.AddMediatR(
 			cfg => cfg.RegisterServicesFromAssembly(typeof(IOrganizationFeature).Assembly));
 
-		services.AddAutoMapper(
-			cfg => cfg.AddMaps(typeof(IOrganizationFeature).Assembly));
+		TypeAdapterConfig.GlobalSettings.Scan(typeof(IOrganizationFeature).Assembly);
 
 		services.AddControllers()
 			.AddApplicationPart(typeof(IOrganizationFeature).Assembly);
