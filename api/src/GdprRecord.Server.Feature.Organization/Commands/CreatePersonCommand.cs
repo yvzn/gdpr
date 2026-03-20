@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GdprRecord.Server.Feature.Organization.Commands;
 
-public record CreatePersonResponse(int Id) : PersonCreated(Id);
+public record CreatePersonResponse(int Id);
 
 public record CreatePersonCommand(
 	string? FullName,

@@ -7,6 +7,6 @@ public class CreateOrUpdatePersonMapperProfile : IRegister
 	public void Register(TypeAdapterConfig config)
 	{
 		config.NewConfig<CreatePersonCommand, Model.Person>();
-		config.NewConfig<CreateOrUpdatePersonCommand, Model.Person>();
+		config.NewConfig<UpdatePersonCommand, Model.Person>();
 	}
 }

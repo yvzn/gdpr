@@ -32,22 +32,20 @@ public class PeopleController(IMediator mediator) : ControllerBase
 
 	[HttpPut]
 	[Route("{id:int}")]
-	public async Task<IActionResult> CreateOrUpdatePerson(
+	public async Task<IActionResult> UpdatePerson(
 		int id,
-		[FromBody] CreateOrUpdatePersonCommand createOrUpdatePersonCommand)
+		[FromBody] UpdatePersonCommand updatePersonCommand)
 	{
-		if (id != createOrUpdatePersonCommand.Id)
+		if (id != updatePersonCommand.Id)
 		{
 			return BadRequest();
 		}
 
-		var response = await mediator.Send(createOrUpdatePersonCommand);
+		var response = await mediator.Send(updatePersonCommand);
 
 		return response.Match<IActionResult>(
-			failure: _ => Conflict(),
-			success: result => result is PersonCreated created
-						? CreatedAtAction(nameof(ReadPerson), new { id = created.Id }, default)
-						: NoContent());
+			failure: error => error is Error.NotFound ? NotFound() : Conflict(),
+			success: _ => NoContent());
 	}
 
 	[HttpPost]
