@@ -12,8 +12,6 @@ public class UpdateOrganizationMapperProfile : IRegister
 			.IgnoreIf((src, dest) => !IsValidPersonId(src.JointControllerId), dest => dest.JointControllerId)
 			.IgnoreIf((src, dest) => !IsValidPersonId(src.ControllersRepresentativeId), dest => dest.ControllersRepresentativeId)
 			.IgnoreIf((src, dest) => !IsValidPersonId(src.DataProtectionOfficerId), dest => dest.DataProtectionOfficerId);
-
-		config.NewConfig<Model.Organization, ReadOrganizationResponse>();
 	}
 
 	private static bool IsValidPersonId(int? maybeId)
