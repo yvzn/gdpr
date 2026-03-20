@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="README.md" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/GdprRecord.Server.Feature.Organization/GdprRecord.Server.Feature.Organization.csproj" />
+    <Project Path="src/GdprRecord.Server.Feature.ProcessingActivity/GdprRecord.Server.Feature.ProcessingActivity.csproj" />
+    <Project Path="src/GdprRecord.Server/GdprRecord.Server.csproj" />
+  </Folder>
+</Solution>

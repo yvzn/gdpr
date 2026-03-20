@@ -1,6 +1,9 @@
 @GdprRecord.Server_HostAddress = http://localhost:5220
 
-GET {{GdprRecord.Server_HostAddress}}/weatherforecast/
+GET {{GdprRecord.Server_HostAddress}}/api/organizations
 Accept: application/json
 
 ###
+
+GET {{GdprRecord.Server_HostAddress}}/api/people
+Accept: application/json

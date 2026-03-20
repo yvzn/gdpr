@@ -16,7 +16,8 @@ public static class IServicesCollectionExtensions
 		services.AddMediatR(
 			cfg => cfg.RegisterServicesFromAssembly(typeof(IOrganizationFeature).Assembly));
 
-		services.AddAutoMapper(typeof(IOrganizationFeature).Assembly);
+		services.AddAutoMapper(
+			cfg => cfg.AddMaps(typeof(IOrganizationFeature).Assembly));
 
 		services.AddControllers()
 			.AddApplicationPart(typeof(IOrganizationFeature).Assembly);
