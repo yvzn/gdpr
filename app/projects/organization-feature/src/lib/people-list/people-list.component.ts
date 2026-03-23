@@ -30,6 +30,10 @@ import { PeopleService } from '../people.service';
         <div class="flex justify-center items-center h-32">
           <p class="text-gray-500 dark:text-gray-400">Loading...</p>
         </div>
+      } @else if (loadError) {
+        <div class="p-4 bg-red-50 border border-red-200 rounded-lg dark:bg-red-900 dark:border-red-700">
+          <p class="text-red-600 dark:text-red-400">{{ loadError }}</p>
+        </div>
       } @else if (filteredPeople.length === 0) {
         <div class="flex justify-center items-center h-32">
           <p class="text-gray-500 dark:text-gray-400">No people found.</p>
@@ -103,6 +107,7 @@ export class PeopleListComponent implements OnInit {
   pagedPeople: Person[] = [];
   searchQuery = '';
   loading = false;
+  loadError = '';
 
   currentPage = 1;
   pageSize = 9;
@@ -118,7 +123,10 @@ export class PeopleListComponent implements OnInit {
         this.updatePagination();
         this.loading = false;
       },
-      error: () => { this.loading = false; }
+      error: () => {
+        this.loading = false;
+        this.loadError = 'Failed to load people. Please try again.';
+      }
     });
   }
 

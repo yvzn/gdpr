@@ -21,6 +21,10 @@ import { PeoplePickerModalComponent } from '../people-picker-modal/people-picker
         <div class="flex justify-center items-center h-32">
           <p class="text-gray-500 dark:text-gray-400">Loading...</p>
         </div>
+      } @else if (loadError) {
+        <div class="p-4 bg-red-50 border border-red-200 rounded-lg dark:bg-red-900 dark:border-red-700">
+          <p class="text-red-600 dark:text-red-400">{{ loadError }}</p>
+        </div>
       } @else if (!organization) {
         <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
           <p class="text-red-600">Organization not found.</p>
@@ -143,6 +147,7 @@ export class OrganizationDetailComponent implements OnInit {
 
   organization: Organization | null = null;
   loading = false;
+  loadError = '';
   saving = false;
   saveSuccess = false;
   saveError = '';
@@ -157,7 +162,10 @@ export class OrganizationDetailComponent implements OnInit {
       this.loading = true;
       this.orgService.getById(id).subscribe({
         next: (org) => { this.organization = { ...org }; this.loading = false; },
-        error: () => { this.loading = false; }
+        error: () => {
+          this.loading = false;
+          this.loadError = 'Failed to load organization. Please try again.';
+        }
       });
     }
   }

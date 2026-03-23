@@ -22,6 +22,10 @@ import { PeopleService } from '../people.service';
         <div class="flex justify-center items-center h-32">
           <p class="text-gray-500 dark:text-gray-400">Loading...</p>
         </div>
+      } @else if (loadError) {
+        <div class="p-4 bg-red-50 border border-red-200 rounded-lg dark:bg-red-900 dark:border-red-700">
+          <p class="text-red-600 dark:text-red-400">{{ loadError }}</p>
+        </div>
       } @else {
         <form (ngSubmit)="onSave()" #form="ngForm">
           <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 dark:bg-gray-800 dark:border-gray-700">
@@ -91,6 +95,7 @@ export class PersonDetailComponent implements OnInit {
   person: Person = { id: 0 };
   isNew = false;
   loading = false;
+  loadError = '';
   saving = false;
   saveSuccess = false;
   saveError = '';
@@ -105,7 +110,10 @@ export class PersonDetailComponent implements OnInit {
         this.loading = true;
         this.peopleService.getById(id).subscribe({
           next: (person) => { this.person = { ...person }; this.loading = false; },
-          error: () => { this.loading = false; }
+          error: () => {
+            this.loading = false;
+            this.loadError = 'Failed to load person. Please try again.';
+          }
         });
       }
     }

@@ -33,6 +33,8 @@ import { PeopleService } from '../people.service';
           <div class="p-4 max-h-80 overflow-y-auto">
             @if (loading) {
               <p class="text-center text-gray-500 dark:text-gray-400">Loading...</p>
+            } @else if (loadError) {
+              <p class="text-center text-red-600 dark:text-red-400">{{ loadError }}</p>
             } @else if (filteredPeople.length === 0) {
               <p class="text-center text-gray-500 dark:text-gray-400">No people found.</p>
             } @else {
@@ -83,6 +85,7 @@ export class PeoplePickerModalComponent implements OnInit {
   filteredPeople: Person[] = [];
   searchQuery = '';
   loading = false;
+  loadError = '';
 
   ngOnInit(): void {
     this.loadPeople();
@@ -96,7 +99,10 @@ export class PeoplePickerModalComponent implements OnInit {
         this.filteredPeople = people;
         this.loading = false;
       },
-      error: () => { this.loading = false; }
+      error: () => {
+        this.loading = false;
+        this.loadError = 'Failed to load people. Please try again.';
+      }
     });
   }
 
