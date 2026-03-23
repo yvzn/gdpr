@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, effect, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { OrganizationStore } from '../organization.store';
@@ -27,34 +27,32 @@ export class OrganizationDetail implements OnInit, OnDestroy {
 
   showPeoplePicker = false;
   private activeRole: PersonRole | null = null;
+  private formPopulated = false;
+
+  constructor() {
+    effect(() => {
+      const org = this.store.selectedOrganization();
+      if (org && !this.formPopulated) {
+        this.name = org.name ?? '';
+        this.controllerId = org.controllerId;
+        this.jointControllerId = org.jointControllerId;
+        this.controllersRepresentativeId = org.controllersRepresentativeId;
+        this.dataProtectionOfficerId = org.dataProtectionOfficerId;
+        this.formPopulated = true;
+      }
+    });
+  }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     if (id) {
       this.store.loadById(id);
       this.peopleStore.loadAll();
-      this.watchOrganization();
     }
   }
 
   ngOnDestroy(): void {
     this.store.clearSelected();
-  }
-
-  private watchOrganization(): void {
-    const checkLoaded = setInterval(() => {
-      const org = this.store.selectedOrganization();
-      if (org) {
-        this.name = org.name ?? '';
-        this.controllerId = org.controllerId;
-        this.jointControllerId = org.jointControllerId;
-        this.controllersRepresentativeId = org.controllersRepresentativeId;
-        this.dataProtectionOfficerId = org.dataProtectionOfficerId;
-        clearInterval(checkLoaded);
-      }
-    }, 100);
-
-    setTimeout(() => clearInterval(checkLoaded), 10000);
   }
 
   getPersonName(personId: number | null): string {

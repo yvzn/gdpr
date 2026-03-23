@@ -1,7 +1,7 @@
 import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs';
+import { catchError, EMPTY, pipe, switchMap, tap } from 'rxjs';
 import { Person } from './models';
 import { PeopleService } from './people.service';
 
@@ -26,8 +26,8 @@ const initialState: PeopleState = {
 export const PeopleStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withComputed((store) => ({
-    filteredPeople: computed(() => {
+  withComputed((store) => {
+    const filteredPeople = computed(() => {
       const filter = store.filter().toLowerCase();
       if (!filter) return store.people();
       return store.people().filter(
@@ -36,33 +36,18 @@ export const PeopleStore = signalStore(
           p.email?.toLowerCase().includes(filter) ||
           p.company?.toLowerCase().includes(filter)
       );
-    }),
-    totalPages: computed(() => {
-      const filter = store.filter().toLowerCase();
-      const filtered = !filter
-        ? store.people()
-        : store.people().filter(
-            (p) =>
-              p.fullName?.toLowerCase().includes(filter) ||
-              p.email?.toLowerCase().includes(filter) ||
-              p.company?.toLowerCase().includes(filter)
-          );
-      return Math.max(1, Math.ceil(filtered.length / store.pageSize()));
-    }),
-    paginatedPeople: computed(() => {
-      const filter = store.filter().toLowerCase();
-      const filtered = !filter
-        ? store.people()
-        : store.people().filter(
-            (p) =>
-              p.fullName?.toLowerCase().includes(filter) ||
-              p.email?.toLowerCase().includes(filter) ||
-              p.company?.toLowerCase().includes(filter)
-          );
-      const start = (store.currentPage() - 1) * store.pageSize();
-      return filtered.slice(start, start + store.pageSize());
-    }),
-  })),
+    });
+    return {
+      filteredPeople,
+      totalPages: computed(() =>
+        Math.max(1, Math.ceil(filteredPeople().length / store.pageSize()))
+      ),
+      paginatedPeople: computed(() => {
+        const start = (store.currentPage() - 1) * store.pageSize();
+        return filteredPeople().slice(start, start + store.pageSize());
+      }),
+    };
+  }),
   withMethods((store, peopleService = inject(PeopleService)) => ({
     setFilter(filter: string): void {
       patchState(store, { filter, currentPage: 1 });
@@ -80,7 +65,11 @@ export const PeopleStore = signalStore(
                 people: response.people,
                 loading: false,
               })
-            )
+            ),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
+            })
           )
         )
       )
@@ -92,7 +81,11 @@ export const PeopleStore = signalStore(
           peopleService.getById(id).pipe(
             tap((person) =>
               patchState(store, { selectedPerson: person, loading: false })
-            )
+            ),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
+            })
           )
         )
       )
@@ -110,7 +103,11 @@ export const PeopleStore = signalStore(
                   p.id === person.id ? person : p
                 ),
               })
-            )
+            ),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
+            })
           )
         )
       )
@@ -127,6 +124,10 @@ export const PeopleStore = signalStore(
                 loading: false,
                 people: [...store.people(), newPerson],
               });
+            }),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
             })
           )
         )

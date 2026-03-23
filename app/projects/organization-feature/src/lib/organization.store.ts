@@ -1,7 +1,7 @@
 import { computed, inject } from '@angular/core';
 import { signalStore, withState, withComputed, withMethods, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs';
+import { catchError, EMPTY, pipe, switchMap, tap } from 'rxjs';
 import { Organization } from './models';
 import { OrganizationService } from './organization.service';
 
@@ -26,30 +26,25 @@ const initialState: OrganizationState = {
 export const OrganizationStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withComputed((store) => ({
-    filteredOrganizations: computed(() => {
+  withComputed((store) => {
+    const filteredOrganizations = computed(() => {
       const filter = store.filter().toLowerCase();
       if (!filter) return store.organizations();
       return store.organizations().filter(
         (org) => org.name?.toLowerCase().includes(filter)
       );
-    }),
-    totalPages: computed(() => {
-      const filter = store.filter().toLowerCase();
-      const filtered = !filter
-        ? store.organizations()
-        : store.organizations().filter((org) => org.name?.toLowerCase().includes(filter));
-      return Math.max(1, Math.ceil(filtered.length / store.pageSize()));
-    }),
-    paginatedOrganizations: computed(() => {
-      const filter = store.filter().toLowerCase();
-      const filtered = !filter
-        ? store.organizations()
-        : store.organizations().filter((org) => org.name?.toLowerCase().includes(filter));
-      const start = (store.currentPage() - 1) * store.pageSize();
-      return filtered.slice(start, start + store.pageSize());
-    }),
-  })),
+    });
+    return {
+      filteredOrganizations,
+      totalPages: computed(() =>
+        Math.max(1, Math.ceil(filteredOrganizations().length / store.pageSize()))
+      ),
+      paginatedOrganizations: computed(() => {
+        const start = (store.currentPage() - 1) * store.pageSize();
+        return filteredOrganizations().slice(start, start + store.pageSize());
+      }),
+    };
+  }),
   withMethods((store, organizationService = inject(OrganizationService)) => ({
     setFilter(filter: string): void {
       patchState(store, { filter, currentPage: 1 });
@@ -67,7 +62,11 @@ export const OrganizationStore = signalStore(
                 organizations: response.organizations,
                 loading: false,
               })
-            )
+            ),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
+            })
           )
         )
       )
@@ -79,7 +78,11 @@ export const OrganizationStore = signalStore(
           organizationService.getById(id).pipe(
             tap((organization) =>
               patchState(store, { selectedOrganization: organization, loading: false })
-            )
+            ),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
+            })
           )
         )
       )
@@ -97,7 +100,11 @@ export const OrganizationStore = signalStore(
                   o.id === organization.id ? organization : o
                 ),
               })
-            )
+            ),
+            catchError(() => {
+              patchState(store, { loading: false });
+              return EMPTY;
+            })
           )
         )
       )

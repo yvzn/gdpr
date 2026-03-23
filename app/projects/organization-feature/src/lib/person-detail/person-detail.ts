@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, effect, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PeopleStore } from '../people.store';
@@ -23,6 +23,23 @@ export class PersonDetail implements OnInit, OnDestroy {
   zipCode = '';
 
   private personId = 0;
+  private formPopulated = false;
+
+  constructor() {
+    effect(() => {
+      const person = this.store.selectedPerson();
+      if (person && !this.formPopulated) {
+        this.fullName = person.fullName ?? '';
+        this.company = person.company ?? '';
+        this.email = person.email ?? '';
+        this.phone = person.phone ?? '';
+        this.address = person.address ?? '';
+        this.city = person.city ?? '';
+        this.zipCode = person.zipCode ?? '';
+        this.formPopulated = true;
+      }
+    });
+  }
 
   ngOnInit(): void {
     const idParam = this.route.snapshot.paramMap.get('id');
@@ -33,31 +50,12 @@ export class PersonDetail implements OnInit, OnDestroy {
       if (id) {
         this.personId = id;
         this.store.loadById(id);
-        this.watchPerson();
       }
     }
   }
 
   ngOnDestroy(): void {
     this.store.clearSelected();
-  }
-
-  private watchPerson(): void {
-    const checkLoaded = setInterval(() => {
-      const person = this.store.selectedPerson();
-      if (person) {
-        this.fullName = person.fullName ?? '';
-        this.company = person.company ?? '';
-        this.email = person.email ?? '';
-        this.phone = person.phone ?? '';
-        this.address = person.address ?? '';
-        this.city = person.city ?? '';
-        this.zipCode = person.zipCode ?? '';
-        clearInterval(checkLoaded);
-      }
-    }, 100);
-
-    setTimeout(() => clearInterval(checkLoaded), 10000);
   }
 
   save(): void {
