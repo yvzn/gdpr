@@ -1,0 +1,185 @@
+<div class="mb-6">
+  <div class="flex items-center gap-4 mb-6">
+    <button
+      (click)="goBack()"
+      class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Organization Details</h1>
+  </div>
+
+  @if (store.loading()) {
+    <div class="text-center py-8">
+      <div
+        class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  }
+
+  @if (store.selectedOrganization(); as org) {
+    <div class="bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-6">
+      <form (ngSubmit)="save()" #orgForm="ngForm">
+        <div class="mb-4">
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Name
+          </label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="name"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Controller
+            </label>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                [value]="getPersonName(controllerId)"
+                readonly
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white cursor-not-allowed"
+              />
+              <button
+                type="button"
+                (click)="openPeoplePicker('controller')"
+                class="px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Select
+              </button>
+              @if (controllerId) {
+                <button
+                  type="button"
+                  (click)="clearPerson('controller')"
+                  class="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500"
+                >
+                  Clear
+                </button>
+              }
+            </div>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Joint Controller
+            </label>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                [value]="getPersonName(jointControllerId)"
+                readonly
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white cursor-not-allowed"
+              />
+              <button
+                type="button"
+                (click)="openPeoplePicker('jointController')"
+                class="px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Select
+              </button>
+              @if (jointControllerId) {
+                <button
+                  type="button"
+                  (click)="clearPerson('jointController')"
+                  class="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500"
+                >
+                  Clear
+                </button>
+              }
+            </div>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Controller's Representative
+            </label>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                [value]="getPersonName(controllersRepresentativeId)"
+                readonly
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white cursor-not-allowed"
+              />
+              <button
+                type="button"
+                (click)="openPeoplePicker('controllersRepresentative')"
+                class="px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Select
+              </button>
+              @if (controllersRepresentativeId) {
+                <button
+                  type="button"
+                  (click)="clearPerson('controllersRepresentative')"
+                  class="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500"
+                >
+                  Clear
+                </button>
+              }
+            </div>
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Data Protection Officer
+            </label>
+            <div class="flex gap-2">
+              <input
+                type="text"
+                [value]="getPersonName(dataProtectionOfficerId)"
+                readonly
+                class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:text-white cursor-not-allowed"
+              />
+              <button
+                type="button"
+                (click)="openPeoplePicker('dataProtectionOfficer')"
+                class="px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Select
+              </button>
+              @if (dataProtectionOfficerId) {
+                <button
+                  type="button"
+                  (click)="clearPerson('dataProtectionOfficer')"
+                  class="px-3 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 dark:bg-gray-600 dark:text-gray-300 dark:hover:bg-gray-500"
+                >
+                  Clear
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <button
+            type="submit"
+            class="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            (click)="goBack()"
+            class="px-5 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+
+  @if (showPeoplePicker) {
+    <lib-people-picker-modal
+      (personSelected)="onPersonSelected($event)"
+      (closed)="closePeoplePicker()"
+    />
+  }
+</div>

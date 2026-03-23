@@ -1,0 +1,85 @@
+<div class="mb-6">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">People</h1>
+    <button
+      (click)="navigateToNew()"
+      class="px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Add Person
+    </button>
+  </div>
+
+  <div class="mb-4">
+    <input
+      type="text"
+      [ngModel]="store.filter()"
+      (ngModelChange)="store.setFilter($event)"
+      placeholder="Filter people by name, email, or company..."
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    />
+  </div>
+
+  @if (store.loading()) {
+    <div class="text-center py-8">
+      <div
+        class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"
+        role="status"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  }
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    @for (person of store.paginatedPeople(); track person.id) {
+      <div
+        class="block p-6 bg-white border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 cursor-pointer"
+        (click)="navigateToDetail(person.id)"
+        (keyup.enter)="navigateToDetail(person.id)"
+        tabindex="0"
+        role="button"
+      >
+        <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {{ person.fullName || 'Unnamed Person' }}
+        </h5>
+        @if (person.company) {
+          <p class="text-sm text-gray-600 dark:text-gray-300">{{ person.company }}</p>
+        }
+        @if (person.email) {
+          <p class="text-sm text-gray-500 dark:text-gray-400">{{ person.email }}</p>
+        }
+        @if (person.city) {
+          <p class="text-sm text-gray-400 dark:text-gray-500">{{ person.city }}</p>
+        }
+      </div>
+    } @empty {
+      @if (!store.loading()) {
+        <div class="col-span-full text-center py-8 text-gray-500 dark:text-gray-400">
+          No people found.
+        </div>
+      }
+    }
+  </div>
+
+  @if (store.totalPages() > 1) {
+    <nav class="flex items-center justify-center gap-2 mt-6">
+      <button
+        (click)="store.setPage(store.currentPage() - 1)"
+        [disabled]="store.currentPage() === 1"
+        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        Previous
+      </button>
+      <span class="text-sm text-gray-700 dark:text-gray-400">
+        Page {{ store.currentPage() }} of {{ store.totalPages() }}
+      </span>
+      <button
+        (click)="store.setPage(store.currentPage() + 1)"
+        [disabled]="store.currentPage() === store.totalPages()"
+        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 disabled:opacity-50 disabled:cursor-not-allowed dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        Next
+      </button>
+    </nav>
+  }
+</div>
