@@ -13,7 +13,7 @@
     "experimentalDecorators": true,
     "paths": {
       "organization-feature": [
-        "./dist/organization-feature"
+        "./projects/organization-feature/src/public-api"
       ]
     },
     "importHelpers": true,
