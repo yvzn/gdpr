@@ -1,1 +1,9 @@
-<router-outlet />
+<mat-sidenav-container>
+  <mat-sidenav-content role="main">
+    <app-header (menuOpened)="openMenu()"></app-header>
+    <router-outlet />
+  </mat-sidenav-content>
+  <mat-sidenav position="end" role="navigation">
+    <app-main-menu (menuClosed)="closeMenu()"></app-main-menu>
+  </mat-sidenav>
+</mat-sidenav-container>

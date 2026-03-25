@@ -1,12 +1,24 @@
-import { Component, signal } from '@angular/core';
+import { Component, viewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+
+import { HeaderComponent } from './header/header';
+import { MainMenuComponent } from './main-menu/main-menu';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet],
+	imports: [RouterOutlet, MatSidenavContainer, MatSidenav, MatSidenavContent, HeaderComponent, MainMenuComponent],
 	templateUrl: './app.html',
 	styleUrl: './app.scss',
 })
 export class App {
-	protected readonly title = signal('app');
+	sidenav = viewChild.required(MatSidenav);
+
+  openMenu(): void {
+    this.sidenav().open();
+  }
+
+  closeMenu(): void {
+    this.sidenav().close();
+  }
 }

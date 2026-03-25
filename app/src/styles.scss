@@ -6,6 +6,7 @@
 @use '@angular/material' as mat;
 
 html {
+  color-scheme: light dark;
 	height: 100%;
 	@include mat.theme(
 		(
@@ -37,3 +38,7 @@ body {
 	height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --spacing: 16px;
+}
