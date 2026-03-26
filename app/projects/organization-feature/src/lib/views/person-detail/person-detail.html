@@ -1,0 +1,129 @@
+<section class="detail-container">
+	<a routerLink="/people" class="back-link" aria-label="Back to people list">
+		<mat-icon>arrow_back</mat-icon>
+		<span>Back to People</span>
+	</a>
+
+	@if (store.error(); as error) {
+	<lib-error-banner [message]="error" (retried)="retry()" />
+	} @if (!isNewMode() && store.loadingDetail()) {
+	<lib-skeleton-detail />
+	} @else { @if (store.saving()) {
+	<mat-progress-bar mode="indeterminate" aria-label="Saving person" />
+	}
+
+	<mat-card appearance="outlined">
+		<mat-card-header>
+			<mat-card-title>
+				@if (isNewMode()) { New Person } @else { {{ store.selectedPerson()?.fullName || 'Unnamed
+				Person' }} }
+			</mat-card-title>
+			<mat-icon class="card-icon" aria-hidden="true">person</mat-icon>
+		</mat-card-header>
+
+		<mat-card-content>
+			<form (ngSubmit)="save(personForm)" class="detail-form" #personForm="ngForm">
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label>Full Name</mat-label>
+					<input
+						matInput
+						[ngModel]="fullName()"
+						(ngModelChange)="fullName.set($event)"
+						name="fullName"
+						placeholder="Enter full name"
+						aria-label="Full name"
+					/>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label>Email</mat-label>
+					<input
+						matInput
+						type="email"
+						[ngModel]="email()"
+						(ngModelChange)="email.set($event)"
+						name="email"
+						email
+						placeholder="Enter email address"
+						aria-label="Email address"
+						#emailField="ngModel"
+					/>
+					@if (emailField.invalid && emailField.touched) {
+					<mat-error>Please enter a valid email address.</mat-error>
+					}
+				</mat-form-field>
+
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label>Phone</mat-label>
+					<input
+						matInput
+						type="tel"
+						[ngModel]="phone()"
+						(ngModelChange)="phone.set($event)"
+						name="phone"
+						placeholder="Enter phone number"
+						aria-label="Phone number"
+					/>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label>Company</mat-label>
+					<input
+						matInput
+						[ngModel]="company()"
+						(ngModelChange)="company.set($event)"
+						name="company"
+						placeholder="Enter company name"
+						aria-label="Company"
+					/>
+				</mat-form-field>
+
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label>Address</mat-label>
+					<input
+						matInput
+						[ngModel]="address()"
+						(ngModelChange)="address.set($event)"
+						name="address"
+						placeholder="Enter street address"
+						aria-label="Street address"
+					/>
+				</mat-form-field>
+
+				<div class="form-row">
+					<mat-form-field appearance="outline" class="half-width">
+						<mat-label>City</mat-label>
+						<input
+							matInput
+							[ngModel]="city()"
+							(ngModelChange)="city.set($event)"
+							name="city"
+							placeholder="Enter city"
+							aria-label="City"
+						/>
+					</mat-form-field>
+
+					<mat-form-field appearance="outline" class="half-width">
+						<mat-label>ZIP Code</mat-label>
+						<input
+							matInput
+							[ngModel]="zipCode()"
+							(ngModelChange)="zipCode.set($event)"
+							name="zipCode"
+							placeholder="Enter ZIP code"
+							aria-label="ZIP code"
+						/>
+					</mat-form-field>
+				</div>
+
+				<mat-card-actions align="end">
+					<a mat-button routerLink="/people" type="button">Cancel</a>
+					<button mat-flat-button type="submit" [disabled]="store.saving()">
+						@if (isNewMode()) { Create } @else { Save }
+					</button>
+				</mat-card-actions>
+			</form>
+		</mat-card-content>
+	</mat-card>
+	}
+</section>

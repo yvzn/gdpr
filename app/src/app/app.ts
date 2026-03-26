@@ -7,18 +7,25 @@ import { MainMenuComponent } from './main-menu/main-menu';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, MatSidenavContainer, MatSidenav, MatSidenavContent, HeaderComponent, MainMenuComponent],
+	imports: [
+		RouterOutlet,
+		MatSidenavContainer,
+		MatSidenav,
+		MatSidenavContent,
+		HeaderComponent,
+		MainMenuComponent,
+	],
 	templateUrl: './app.html',
 	styleUrl: './app.scss',
 })
 export class App {
 	sidenav = viewChild.required(MatSidenav);
 
-  openMenu(): void {
-    this.sidenav().open();
-  }
+	openMenu(): void {
+		this.sidenav().open();
+	}
 
-  closeMenu(): void {
-    this.sidenav().close();
-  }
+	closeMenu(): void {
+		this.sidenav().close();
+	}
 }

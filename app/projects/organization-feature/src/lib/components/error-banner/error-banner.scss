@@ -1,0 +1,14 @@
+.error-banner {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 12px 16px;
+	border-radius: 8px;
+	background: var(--mat-sys-error-container);
+	color: var(--mat-sys-on-error-container);
+	margin: 16px 0;
+}
+
+.error-message {
+	flex: 1;
+}

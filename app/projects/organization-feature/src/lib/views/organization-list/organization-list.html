@@ -1,0 +1,72 @@
+<section class="list-container">
+	<header class="list-header">
+		<h1>Organizations</h1>
+		<mat-form-field appearance="outline" class="filter-field">
+			<mat-label>Filter organizations</mat-label>
+			<mat-icon matPrefix>search</mat-icon>
+			<input
+				matInput
+				type="search"
+				[ngModel]="store.filter()"
+				(ngModelChange)="onFilterChange($event)"
+				placeholder="Search by name..."
+				aria-label="Filter organizations by name"
+			/>
+		</mat-form-field>
+	</header>
+
+	@if (store.error(); as error) {
+	<lib-error-banner [message]="error" (retried)="retry()" />
+	} @if (store.loading()) {
+	<div class="card-grid" aria-busy="true" aria-label="Loading organizations">
+		<lib-skeleton-card [count]="6" />
+	</div>
+	} @else { @if (store.paginatedOrganizations().length === 0) {
+	<div class="empty-state" role="status">
+		<mat-icon class="empty-icon">business</mat-icon>
+		<p>No organizations found.</p>
+		@if (store.filter()) {
+		<button mat-button (click)="onFilterChange('')" type="button">Clear filter</button>
+		}
+	</div>
+	} @else {
+	<div class="card-grid" role="list">
+		@for (org of store.paginatedOrganizations(); track org.id) {
+		<a
+			[routerLink]="['/organizations', org.id]"
+			class="card-link"
+			role="listitem"
+			[attr.aria-label]="'View organization: ' + (org.name || 'Unnamed')"
+		>
+			<mat-card class="org-card" appearance="outlined">
+				<mat-card-header>
+					<mat-card-title>{{ org.name || 'Unnamed Organization' }}</mat-card-title>
+					<mat-card-subtitle>ID: {{ org.id }}</mat-card-subtitle>
+					<mat-icon class="card-avatar" aria-hidden="true">business</mat-icon>
+				</mat-card-header>
+				<mat-card-content>
+					<div class="card-details">
+						@if (org.controllerId) {
+						<span class="badge">Controller assigned</span>
+						} @if (org.dataProtectionOfficerId) {
+						<span class="badge">DPO assigned</span>
+						}
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</a>
+		}
+	</div>
+
+	<mat-paginator
+		[length]="store.totalFilteredCount()"
+		[pageSize]="store.pageSize()"
+		[pageIndex]="store.page()"
+		[pageSizeOptions]="[6, 12, 24]"
+		(page)="onPageChange($event)"
+		aria-label="Organizations pagination"
+		showFirstLastButtons
+	>
+	</mat-paginator>
+	} }
+</section>

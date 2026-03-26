@@ -1,0 +1,67 @@
+.detail-container {
+	padding: 24px;
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	text-decoration: none;
+	color: var(--mat-sys-primary);
+	margin-bottom: 16px;
+	font-size: 0.875rem;
+
+	&:focus-visible {
+		outline: 2px solid var(--mat-sys-primary);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+}
+
+.card-icon {
+	font-size: 32px;
+	width: 32px;
+	height: 32px;
+	color: var(--mat-sys-primary);
+	margin-left: auto;
+	flex-shrink: 0;
+}
+
+.detail-form {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding-top: 16px;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.form-row {
+	display: flex;
+	gap: 16px;
+
+	@media (max-width: 599px) {
+		flex-direction: column;
+		gap: 4px;
+	}
+}
+
+.half-width {
+	flex: 1;
+}
+
+mat-card {
+	background-color: var(--mat-sys-surface-container-lowest);
+}
+
+mat-card-actions {
+	gap: 8px;
+}
+
+mat-progress-bar {
+	margin-bottom: 16px;
+}

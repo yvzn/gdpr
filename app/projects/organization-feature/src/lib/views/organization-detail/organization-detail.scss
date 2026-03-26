@@ -1,0 +1,101 @@
+.detail-container {
+	padding: 24px;
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	text-decoration: none;
+	color: var(--mat-sys-primary);
+	margin-bottom: 16px;
+	font-size: 0.875rem;
+
+	&:focus-visible {
+		outline: 2px solid var(--mat-sys-primary);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+}
+
+.card-icon {
+	font-size: 32px;
+	width: 32px;
+	height: 32px;
+	color: var(--mat-sys-primary);
+	margin-left: auto;
+	flex-shrink: 0;
+}
+
+.detail-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding-top: 16px;
+
+	h2 {
+		margin: 8px 0 0;
+		font-size: 1.1rem;
+		color: var(--mat-sys-on-surface-variant);
+	}
+}
+
+.full-width {
+	width: 100%;
+}
+
+.person-role-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 8px 0;
+	border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+}
+
+.person-role-info {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.role-label {
+	font-size: 0.75rem;
+	color: var(--mat-sys-on-surface-variant);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.person-name {
+	font-size: 0.95rem;
+
+	&.unassigned {
+		color: var(--mat-sys-on-surface-variant);
+		font-style: italic;
+	}
+}
+
+.person-role-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	flex-shrink: 0;
+}
+
+mat-card {
+	background-color: var(--mat-sys-surface-container-lowest);
+}
+
+mat-card-actions {
+	gap: 8px;
+}
+
+mat-progress-bar {
+	margin-bottom: 16px;
+}

@@ -1,0 +1,92 @@
+<section class="list-container">
+	<header class="list-header">
+		<h1>People</h1>
+		<div class="header-actions">
+			<mat-form-field appearance="outline" class="filter-field" subscriptSizing="dynamic">
+				<mat-label>Filter people</mat-label>
+				<mat-icon matPrefix>search</mat-icon>
+				<input
+					matInput
+					type="search"
+					[ngModel]="store.filter()"
+					(ngModelChange)="onFilterChange($event)"
+					placeholder="Search by name, email, company..."
+					aria-label="Filter people by name, email or company"
+				/>
+			</mat-form-field>
+			<a
+				mat-fab
+				extended
+				routerLink="/people/new"
+				matTooltip="Add a new person"
+				aria-label="Add a new person"
+			>
+				<mat-icon>person_add</mat-icon>
+				Add Person
+			</a>
+		</div>
+	</header>
+
+	@if (store.error(); as error) {
+	<lib-error-banner [message]="error" (retried)="retry()" />
+	} @if (store.loading()) {
+	<div class="card-grid" aria-busy="true" aria-label="Loading people">
+		<lib-skeleton-card [count]="6" />
+	</div>
+	} @else { @if (store.paginatedPeople().length === 0) {
+	<div class="empty-state" role="status">
+		<mat-icon class="empty-icon">people</mat-icon>
+		<p>No people found.</p>
+		@if (store.filter()) {
+		<button mat-button (click)="onFilterChange('')" type="button">Clear filter</button>
+		}
+	</div>
+	} @else {
+	<div class="card-grid" role="list">
+		@for (person of store.paginatedPeople(); track person.id) {
+		<a
+			[routerLink]="['/people', person.id]"
+			class="card-link"
+			role="listitem"
+			[attr.aria-label]="'View person: ' + (person.fullName || 'Unnamed')"
+		>
+			<mat-card class="person-card" appearance="outlined">
+				<mat-card-header>
+					<mat-card-title>{{ person.fullName || 'Unnamed Person' }}</mat-card-title>
+					<mat-card-subtitle>
+						@if (person.company) { {{ person.company }} } @else { ID: {{ person.id }} }
+					</mat-card-subtitle>
+					<mat-icon class="card-avatar" aria-hidden="true">person</mat-icon>
+				</mat-card-header>
+				<mat-card-content>
+					<div class="card-details">
+						@if (person.email) {
+						<div class="detail-item">
+							<mat-icon class="detail-icon">email</mat-icon>
+							<span>{{ person.email }}</span>
+						</div>
+						} @if (person.city) {
+						<div class="detail-item">
+							<mat-icon class="detail-icon">location_on</mat-icon>
+							<span>{{ person.city }}</span>
+						</div>
+						}
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</a>
+		}
+	</div>
+
+	<mat-paginator
+		[length]="store.totalFilteredCount()"
+		[pageSize]="store.pageSize()"
+		[pageIndex]="store.page()"
+		[pageSizeOptions]="[6, 12, 24]"
+		(page)="onPageChange($event)"
+		aria-label="People pagination"
+		showFirstLastButtons
+	>
+	</mat-paginator>
+	} }
+</section>

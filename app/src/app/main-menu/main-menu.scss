@@ -1,20 +1,20 @@
 header {
-  display: flex;
-  justify-content: flex-end;
-  padding-top: calc(var(--spacing) * 3 / 4);
-  padding-right: var(--spacing);
+	display: flex;
+	justify-content: flex-end;
+	padding-top: calc(var(--spacing) * 3 / 4);
+	padding-right: var(--spacing);
 }
 
 @media screen and (max-width: 599px) {
-  header {
-    padding-top: calc(var(--spacing) / 2);
-  }
+	header {
+		padding-top: calc(var(--spacing) / 2);
+	}
 }
 
 mat-nav-list {
-  padding: var(--spacing);
+	padding: var(--spacing);
 }
 
 mat-divider {
-  margin: var(--spacing);
+	margin: var(--spacing);
 }

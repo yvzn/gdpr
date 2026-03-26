@@ -1,0 +1,81 @@
+<section class="detail-container">
+	<a routerLink="/organizations" class="back-link" aria-label="Back to organizations list">
+		<mat-icon>arrow_back</mat-icon>
+		<span>Back to Organizations</span>
+	</a>
+
+	@if (store.error(); as error) {
+	<lib-error-banner [message]="error" (retried)="retry()" />
+	} @if (store.loadingDetail()) {
+	<lib-skeleton-detail />
+	} @else if (store.selectedOrganization(); as org) { @if (store.saving()) {
+	<mat-progress-bar mode="indeterminate" aria-label="Saving organization" />
+	}
+
+	<mat-card appearance="outlined">
+		<mat-card-header>
+			<mat-card-title>{{ org.name || 'Unnamed Organization' }}</mat-card-title>
+			<mat-icon class="card-icon" aria-hidden="true">business</mat-icon>
+		</mat-card-header>
+
+		<mat-card-content>
+			<form (ngSubmit)="save()" class="detail-form" #orgForm="ngForm">
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label>Organization Name</mat-label>
+					<input
+						matInput
+						[ngModel]="name()"
+						(ngModelChange)="name.set($event)"
+						name="name"
+						placeholder="Enter organization name"
+						aria-label="Organization name"
+					/>
+				</mat-form-field>
+
+				<mat-divider />
+
+				<h2>Key People</h2>
+
+				@for (role of personRoles; track role.field) {
+				<div class="person-role-row">
+					<div class="person-role-info">
+						<span class="role-label">{{ role.label }}</span>
+						@if (getPersonNameForRole(role); as personName) {
+						<span class="person-name">{{ personName }}</span>
+						} @else {
+						<span class="person-name unassigned">Not assigned</span>
+						}
+					</div>
+					<div class="person-role-actions">
+						<button
+							mat-button
+							type="button"
+							(click)="openPersonPicker(role)"
+							[attr.aria-label]="'Select ' + role.label"
+						>
+							<mat-icon>person_search</mat-icon>
+							Select
+						</button>
+						@if (getPersonIdForRole(role)) {
+						<button
+							mat-icon-button
+							type="button"
+							(click)="clearPersonForRole(role)"
+							[attr.aria-label]="'Remove ' + role.label"
+						>
+							<mat-icon>close</mat-icon>
+						</button>
+						}
+					</div>
+				</div>
+				}
+
+				<mat-card-actions align="end">
+					<a mat-button routerLink="/organizations" type="button">Cancel</a>
+					<button mat-flat-button type="submit" [disabled]="store.saving()">Save</button>
+				</mat-card-actions>
+			</form>
+		</mat-card-content>
+	</mat-card>
+	}
+</section>
