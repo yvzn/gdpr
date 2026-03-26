@@ -29,11 +29,21 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class MainMenuComponent {
 	menuClosed = output();
 	menuItems = [
-		{ label: 'Home', icon: 'home', route: '/' },
-		{ label: 'Organizations', icon: 'business', route: '/organizations' },
-		{ label: 'People', icon: 'people', route: '/people' },
+		{ label: $localize`:@@app.menu.home:Home`, icon: 'home', route: '/' },
+		{
+			label: $localize`:@@app.menu.organizations:Organizations`,
+			icon: 'business',
+			route: '/organizations',
+		},
+		{ label: $localize`:@@app.menu.people:People`, icon: 'people', route: '/people' },
 	];
-	navigationLinks = [{ label: 'Source code', icon: 'code', url: 'https://github.com/yvzn/gdpr' }];
+	navigationLinks = [
+		{
+			label: $localize`:@@app.menu.sourceCode:Source code`,
+			icon: 'code',
+			url: 'https://github.com/yvzn/gdpr',
+		},
+	];
 
 	closeMenu(): void {
 		this.menuClosed.emit();

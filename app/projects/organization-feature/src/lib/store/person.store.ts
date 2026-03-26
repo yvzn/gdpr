@@ -111,7 +111,7 @@ export const PersonStore = signalStore(
 							error: () =>
 								patchState(store, {
 									loading: false,
-									error: 'Failed to load people.',
+									error: $localize`:@@person.error.loadAll:Failed to load people.`,
 								}),
 						}),
 					),
@@ -132,7 +132,7 @@ export const PersonStore = signalStore(
 							error: () =>
 								patchState(store, {
 									loadingDetail: false,
-									error: 'Failed to load person details.',
+									error: $localize`:@@person.error.loadDetail:Failed to load person details.`,
 								}),
 						}),
 					),
@@ -157,7 +157,7 @@ export const PersonStore = signalStore(
 							error: () =>
 								patchState(store, {
 									saving: false,
-									error: 'Failed to update person.',
+									error: $localize`:@@person.error.update:Failed to update person.`,
 								}),
 						}),
 					),
@@ -179,7 +179,7 @@ export const PersonStore = signalStore(
 							error: () =>
 								patchState(store, {
 									saving: false,
-									error: 'Failed to create person.',
+									error: $localize`:@@person.error.create:Failed to create person.`,
 								}),
 						}),
 					),

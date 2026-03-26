@@ -52,6 +52,7 @@ export class PersonDetailComponent implements OnInit {
 	private readonly snackBar = inject(MatSnackBar);
 
 	isNewMode = signal(false);
+	readonly unnamedPerson = $localize`:@@person.unnamed:Unnamed Person`;
 
 	fullName = signal('');
 	address = signal('');
@@ -81,10 +82,16 @@ export class PersonDetailComponent implements OnInit {
 			const error = this.store.error();
 			if (wasSaving && !saving && !error) {
 				if (this.isNewMode()) {
-					this.snackBar.open('Person created successfully.', 'Dismiss');
+					this.snackBar.open(
+						$localize`:@@person.detail.createSuccess:Person created successfully.`,
+						$localize`:@@common.dismiss:Dismiss`,
+					);
 					this.router.navigate(['/people']);
 				} else {
-					this.snackBar.open('Person updated successfully.', 'Dismiss');
+					this.snackBar.open(
+						$localize`:@@person.detail.updateSuccess:Person updated successfully.`,
+						$localize`:@@common.dismiss:Dismiss`,
+					);
 				}
 			}
 			wasSaving = saving;

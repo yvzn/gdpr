@@ -72,11 +72,16 @@ export class OrganizationDetailComponent {
 	controllersRepresentativeId = signal<number | null>(null);
 	dataProtectionOfficerId = signal<number | null>(null);
 
+	readonly unnamedOrg = $localize`:@@org.unnamed:Unnamed Organization`;
+
 	readonly personRoles: PersonRole[] = [
-		{ label: 'Controller', field: 'controllerId' },
-		{ label: 'Joint Controller', field: 'jointControllerId' },
-		{ label: "Controller's Representative", field: 'controllersRepresentativeId' },
-		{ label: 'Data Protection Officer', field: 'dataProtectionOfficerId' },
+		{ label: $localize`:@@org.role.controller:Controller`, field: 'controllerId' },
+		{ label: $localize`:@@org.role.jointController:Joint Controller`, field: 'jointControllerId' },
+		{
+			label: $localize`:@@org.role.controllersRepresentative:Controller's Representative`,
+			field: 'controllersRepresentativeId',
+		},
+		{ label: $localize`:@@org.role.dpo:Data Protection Officer`, field: 'dataProtectionOfficerId' },
 	];
 
 	constructor() {
@@ -102,7 +107,10 @@ export class OrganizationDetailComponent {
 			const saving = this.store.saving();
 			const error = this.store.error();
 			if (wasSaving && !saving && !error) {
-				this.snackBar.open('Organization updated successfully.', 'Dismiss');
+				this.snackBar.open(
+					$localize`:@@org.detail.updateSuccess:Organization updated successfully.`,
+					$localize`:@@common.dismiss:Dismiss`,
+				);
 			}
 			wasSaving = saving;
 		});

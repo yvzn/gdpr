@@ -1,9 +1,9 @@
 <section class="list-container">
 	<header class="list-header">
-		<h1>People</h1>
+		<h1 i18n="@@person.list.title">People</h1>
 		<div class="header-actions">
 			<mat-form-field appearance="outline" class="filter-field" subscriptSizing="dynamic">
-				<mat-label>Filter people</mat-label>
+				<mat-label i18n="@@person.list.filterLabel">Filter people</mat-label>
 				<mat-icon matPrefix>search</mat-icon>
 				<input
 					matInput
@@ -11,7 +11,9 @@
 					[ngModel]="store.filter()"
 					(ngModelChange)="onFilterChange($event)"
 					placeholder="Search by name, email, company..."
+					i18n-placeholder="@@person.list.searchPlaceholder"
 					aria-label="Filter people by name, email or company"
+					i18n-aria-label="@@person.list.filterAriaLabel"
 				/>
 			</mat-form-field>
 			<a
@@ -19,10 +21,12 @@
 				extended
 				routerLink="/people/new"
 				matTooltip="Add a new person"
+				i18n-matTooltip="@@person.list.addTooltip"
 				aria-label="Add a new person"
+				i18n-aria-label="@@person.list.addTooltip"
 			>
 				<mat-icon>person_add</mat-icon>
-				Add Person
+				<span i18n="@@person.list.add">Add Person</span>
 			</a>
 		</div>
 	</header>
@@ -36,9 +40,11 @@
 	} @else { @if (store.paginatedPeople().length === 0) {
 	<div class="empty-state" role="status">
 		<mat-icon class="empty-icon">people</mat-icon>
-		<p>No people found.</p>
+		<p i18n="@@person.list.empty">No people found.</p>
 		@if (store.filter()) {
-		<button mat-button (click)="onFilterChange('')" type="button">Clear filter</button>
+		<button mat-button (click)="onFilterChange('')" type="button" i18n="@@person.list.clearFilter">
+			Clear filter
+		</button>
 		}
 	</div>
 	} @else {
@@ -52,7 +58,7 @@
 		>
 			<mat-card class="person-card" appearance="outlined">
 				<mat-card-header>
-					<mat-card-title>{{ person.fullName || 'Unnamed Person' }}</mat-card-title>
+					<mat-card-title>{{ person.fullName || unnamedPerson }}</mat-card-title>
 					<mat-card-subtitle>
 						@if (person.company) { {{ person.company }} } @else { ID: {{ person.id }} }
 					</mat-card-subtitle>

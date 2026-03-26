@@ -1,8 +1,8 @@
 <section class="list-container">
 	<header class="list-header">
-		<h1>Organizations</h1>
+		<h1 i18n="@@org.list.title">Organizations</h1>
 		<mat-form-field appearance="outline" class="filter-field">
-			<mat-label>Filter organizations</mat-label>
+			<mat-label i18n="@@org.list.filterLabel">Filter organizations</mat-label>
 			<mat-icon matPrefix>search</mat-icon>
 			<input
 				matInput
@@ -10,7 +10,9 @@
 				[ngModel]="store.filter()"
 				(ngModelChange)="onFilterChange($event)"
 				placeholder="Search by name..."
+				i18n-placeholder="@@org.list.searchPlaceholder"
 				aria-label="Filter organizations by name"
+				i18n-aria-label="@@org.list.filterAriaLabel"
 			/>
 		</mat-form-field>
 	</header>
@@ -24,9 +26,11 @@
 	} @else { @if (store.paginatedOrganizations().length === 0) {
 	<div class="empty-state" role="status">
 		<mat-icon class="empty-icon">business</mat-icon>
-		<p>No organizations found.</p>
+		<p i18n="@@org.list.empty">No organizations found.</p>
 		@if (store.filter()) {
-		<button mat-button (click)="onFilterChange('')" type="button">Clear filter</button>
+		<button mat-button (click)="onFilterChange('')" type="button" i18n="@@org.list.clearFilter">
+			Clear filter
+		</button>
 		}
 	</div>
 	} @else {
@@ -40,16 +44,16 @@
 		>
 			<mat-card class="org-card" appearance="outlined">
 				<mat-card-header>
-					<mat-card-title>{{ org.name || 'Unnamed Organization' }}</mat-card-title>
+					<mat-card-title>{{ org.name || unnamedOrg }}</mat-card-title>
 					<mat-card-subtitle>ID: {{ org.id }}</mat-card-subtitle>
 					<mat-icon class="card-avatar" aria-hidden="true">business</mat-icon>
 				</mat-card-header>
 				<mat-card-content>
 					<div class="card-details">
 						@if (org.controllerId) {
-						<span class="badge">Controller assigned</span>
+						<span class="badge" i18n="@@org.list.controllerAssigned">Controller assigned</span>
 						} @if (org.dataProtectionOfficerId) {
-						<span class="badge">DPO assigned</span>
+						<span class="badge" i18n="@@org.list.dpoAssigned">DPO assigned</span>
 						}
 					</div>
 				</mat-card-content>

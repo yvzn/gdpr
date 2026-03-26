@@ -47,6 +47,7 @@ import { ErrorBannerComponent } from '../../components/error-banner/error-banner
 })
 export class PersonListComponent {
 	readonly store = inject(PersonStore);
+	readonly unnamedPerson = $localize`:@@person.unnamed:Unnamed Person`;
 
 	onFilterChange(value: string) {
 		this.store.setFilter(value);

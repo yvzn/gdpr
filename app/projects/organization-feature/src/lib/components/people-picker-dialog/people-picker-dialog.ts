@@ -45,6 +45,7 @@ export class PeoplePickerDialogComponent implements OnInit {
 
 	searchTerm = signal('');
 	selectedPerson = signal<Person | null>(null);
+	readonly unnamedPerson = $localize`:@@org.picker.unnamed:Unnamed`;
 
 	filteredPeople = computed(() => {
 		const term = this.searchTerm().toLowerCase();

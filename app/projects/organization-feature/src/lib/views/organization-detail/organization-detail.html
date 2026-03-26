@@ -1,7 +1,12 @@
 <section class="detail-container">
-	<a routerLink="/organizations" class="back-link" aria-label="Back to organizations list">
+	<a
+		routerLink="/organizations"
+		class="back-link"
+		aria-label="Back to organizations list"
+		i18n-aria-label="@@org.detail.backAriaLabel"
+	>
 		<mat-icon>arrow_back</mat-icon>
-		<span>Back to Organizations</span>
+		<span i18n="@@org.detail.back">Back to Organizations</span>
 	</a>
 
 	@if (store.error(); as error) {
@@ -14,27 +19,29 @@
 
 	<mat-card appearance="outlined">
 		<mat-card-header>
-			<mat-card-title>{{ org.name || 'Unnamed Organization' }}</mat-card-title>
+			<mat-card-title>{{ org.name || unnamedOrg }}</mat-card-title>
 			<mat-icon class="card-icon" aria-hidden="true">business</mat-icon>
 		</mat-card-header>
 
 		<mat-card-content>
 			<form (ngSubmit)="save()" class="detail-form" #orgForm="ngForm">
 				<mat-form-field appearance="outline" class="full-width">
-					<mat-label>Organization Name</mat-label>
+					<mat-label i18n="@@org.detail.nameLabel">Organization Name</mat-label>
 					<input
 						matInput
 						[ngModel]="name()"
 						(ngModelChange)="name.set($event)"
 						name="name"
 						placeholder="Enter organization name"
+						i18n-placeholder="@@org.detail.namePlaceholder"
 						aria-label="Organization name"
+						i18n-aria-label="@@org.detail.nameLabel"
 					/>
 				</mat-form-field>
 
 				<mat-divider />
 
-				<h2>Key People</h2>
+				<h2 i18n="@@org.detail.keyPeople">Key People</h2>
 
 				@for (role of personRoles; track role.field) {
 				<div class="person-role-row">
@@ -43,7 +50,7 @@
 						@if (getPersonNameForRole(role); as personName) {
 						<span class="person-name">{{ personName }}</span>
 						} @else {
-						<span class="person-name unassigned">Not assigned</span>
+						<span class="person-name unassigned" i18n="@@org.detail.notAssigned">Not assigned</span>
 						}
 					</div>
 					<div class="person-role-actions">
@@ -54,7 +61,7 @@
 							[attr.aria-label]="'Select ' + role.label"
 						>
 							<mat-icon>person_search</mat-icon>
-							Select
+							<span i18n="@@org.detail.select">Select</span>
 						</button>
 						@if (getPersonIdForRole(role)) {
 						<button
@@ -71,8 +78,10 @@
 				}
 
 				<mat-card-actions align="end">
-					<a mat-button routerLink="/organizations" type="button">Cancel</a>
-					<button mat-flat-button type="submit" [disabled]="store.saving()">Save</button>
+					<a mat-button routerLink="/organizations" type="button" i18n="@@common.cancel">Cancel</a>
+					<button mat-flat-button type="submit" [disabled]="store.saving()" i18n="@@common.save">
+						Save
+					</button>
 				</mat-card-actions>
 			</form>
 		</mat-card-content>

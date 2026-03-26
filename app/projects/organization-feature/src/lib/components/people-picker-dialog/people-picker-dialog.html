@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Select {{ data.roleLabel }}</h2>
+<h2 mat-dialog-title i18n="@@org.picker.title">Select {{ data.roleLabel }}</h2>
 
 <mat-dialog-content>
 	<mat-form-field appearance="outline" class="search-field">
-		<mat-label>Search people</mat-label>
+		<mat-label i18n="@@org.picker.searchLabel">Search people</mat-label>
 		<mat-icon matPrefix>search</mat-icon>
 		<input
 			matInput
@@ -10,14 +10,16 @@
 			[ngModel]="searchTerm()"
 			(ngModelChange)="searchTerm.set($event)"
 			placeholder="Search by name, email, company..."
+			i18n-placeholder="@@org.picker.searchPlaceholder"
 			aria-label="Search people"
+			i18n-aria-label="@@org.picker.searchAriaLabel"
 			cdkFocusInitial
 		/>
 	</mat-form-field>
 
 	<div class="people-list" role="listbox" [attr.aria-label]="'Select ' + data.roleLabel">
 		@if (filteredPeople().length === 0) {
-		<p class="no-results">No people found.</p>
+		<p class="no-results" i18n="@@org.picker.empty">No people found.</p>
 		} @else { @for (person of filteredPeople(); track person.id) {
 		<button
 			class="person-option"
@@ -30,7 +32,7 @@
 		>
 			<mat-icon class="person-icon" aria-hidden="true">person</mat-icon>
 			<div class="person-info">
-				<span class="person-name">{{ person.fullName || 'Unnamed' }}</span>
+				<span class="person-name">{{ person.fullName || unnamedPerson }}</span>
 				@if (person.email || person.company) {
 				<span class="person-sub">
 					@if (person.company) { {{ person.company }} } @if (person.company && person.email) {
@@ -48,10 +50,24 @@
 
 <mat-dialog-actions align="end">
 	@if (data.currentPersonId) {
-	<button mat-button color="warn" (click)="clear()" type="button">Remove Assignment</button>
+	<button
+		mat-button
+		color="warn"
+		(click)="clear()"
+		type="button"
+		i18n="@@org.picker.removeAssignment"
+	>
+		Remove Assignment
+	</button>
 	}
-	<button mat-button (click)="cancel()" type="button">Cancel</button>
-	<button mat-flat-button (click)="confirm()" [disabled]="!selectedPerson()" type="button">
+	<button mat-button (click)="cancel()" type="button" i18n="@@common.cancel">Cancel</button>
+	<button
+		mat-flat-button
+		(click)="confirm()"
+		[disabled]="!selectedPerson()"
+		type="button"
+		i18n="@@common.confirm"
+	>
 		Confirm
 	</button>
 </mat-dialog-actions>

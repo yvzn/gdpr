@@ -10,6 +10,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"skipLibCheck": true,
 		"isolatedModules": true,
+		"resolveJsonModule": true,
 		"experimentalDecorators": true,
 		"paths": {
 			"organization-feature": ["./dist/organization-feature"]

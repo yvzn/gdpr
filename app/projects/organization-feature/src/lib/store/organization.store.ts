@@ -96,7 +96,7 @@ export const OrganizationStore = signalStore(
 							error: () =>
 								patchState(store, {
 									loading: false,
-									error: 'Failed to load organizations.',
+									error: $localize`:@@org.error.loadAll:Failed to load organizations.`,
 								}),
 						}),
 					),
@@ -117,7 +117,7 @@ export const OrganizationStore = signalStore(
 							error: () =>
 								patchState(store, {
 									loadingDetail: false,
-									error: 'Failed to load organization details.',
+									error: $localize`:@@org.error.loadDetail:Failed to load organization details.`,
 								}),
 						}),
 					),
@@ -146,7 +146,7 @@ export const OrganizationStore = signalStore(
 							error: () =>
 								patchState(store, {
 									saving: false,
-									error: 'Failed to update organization.',
+									error: $localize`:@@org.error.update:Failed to update organization.`,
 								}),
 						}),
 					),

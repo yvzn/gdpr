@@ -44,6 +44,7 @@ import { ErrorBannerComponent } from '../../components/error-banner/error-banner
 })
 export class OrganizationListComponent {
 	readonly store = inject(OrganizationStore);
+	readonly unnamedOrg = $localize`:@@org.unnamed:Unnamed Organization`;
 
 	onFilterChange(value: string) {
 		this.store.setFilter(value);
