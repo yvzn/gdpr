@@ -1,7 +1,6 @@
 import { Component, effect, inject, OnInit, signal } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { email, form, FormField } from '@angular/forms/signals';
 import {
 	MatCard,
 	MatCardContent,
@@ -21,12 +20,22 @@ import { SkeletonDetailComponent } from '../../components/skeleton-detail/skelet
 import { ErrorBannerComponent } from '../../components/error-banner/error-banner';
 import { CreatePersonPayload, UpdatePersonPayload } from '../../models/person.model';
 
+interface PersonDetails {
+	fullName: string;
+	address: string;
+	city: string;
+	zipCode: string;
+	email: string;
+	phone: string;
+	company: string;
+}
+
 @Component({
 	selector: 'lib-person-detail',
 	standalone: true,
 	imports: [
 		RouterLink,
-		FormsModule,
+		FormField,
 		MatCard,
 		MatCardContent,
 		MatCardHeader,
@@ -54,25 +63,36 @@ export class PersonDetailComponent implements OnInit {
 	isNewMode = signal(false);
 	readonly unnamedPerson = $localize`:@@person.unnamed:Unnamed Person`;
 
-	fullName = signal('');
-	address = signal('');
-	city = signal('');
-	zipCode = signal('');
-	email = signal('');
-	phone = signal('');
-	company = signal('');
+	personDetails = signal<PersonDetails>({
+		fullName: '',
+		address: '',
+		city: '',
+		zipCode: '',
+		email: '',
+		phone: '',
+		company: '',
+	});
+
+	personForm = form(this.personDetails, (schemaPath) => {
+		email(schemaPath.email, {
+			message: $localize`:@@person.detail.emailError:Please enter a valid email address`,
+		});
+	});
 
 	constructor() {
 		effect(() => {
 			const person = this.store.selectedPerson();
 			if (person && !this.isNewMode()) {
-				this.fullName.set(person.fullName ?? '');
-				this.address.set(person.address ?? '');
-				this.city.set(person.city ?? '');
-				this.zipCode.set(person.zipCode ?? '');
-				this.email.set(person.email ?? '');
-				this.phone.set(person.phone ?? '');
-				this.company.set(person.company ?? '');
+				this.personDetails.update((details) => ({
+					...details,
+					fullName: person.fullName ?? '',
+					address: person.address ?? '',
+					city: person.city ?? '',
+					zipCode: person.zipCode ?? '',
+					email: person.email ?? '',
+					phone: person.phone ?? '',
+					company: person.company ?? '',
+				}));
 			}
 		});
 
@@ -111,21 +131,15 @@ export class PersonDetailComponent implements OnInit {
 		}
 	}
 
-	save(form: NgForm) {
-		if (form.invalid) {
-			form.form.markAllAsTouched();
+	save($event: SubmitEvent) {
+		$event.preventDefault();
+
+		if (this.personForm().invalid()) {
+			this.personForm().markAsTouched();
 			return;
 		}
 		if (this.isNewMode()) {
-			const payload: CreatePersonPayload = {
-				fullName: this.fullName() || null,
-				address: this.address() || null,
-				city: this.city() || null,
-				zipCode: this.zipCode() || null,
-				email: this.email() || null,
-				phone: this.phone() || null,
-				company: this.company() || null,
-			};
+			const payload: CreatePersonPayload = this.personDetails();
 			this.store.create(payload);
 		} else {
 			const person = this.store.selectedPerson();
@@ -133,13 +147,7 @@ export class PersonDetailComponent implements OnInit {
 
 			const payload: UpdatePersonPayload = {
 				id: person.id,
-				fullName: this.fullName() || null,
-				address: this.address() || null,
-				city: this.city() || null,
-				zipCode: this.zipCode() || null,
-				email: this.email() || null,
-				phone: this.phone() || null,
-				company: this.company() || null,
+				...this.personDetails(),
 			};
 			this.store.update(payload);
 		}
