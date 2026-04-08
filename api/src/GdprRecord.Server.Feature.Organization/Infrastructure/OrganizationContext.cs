@@ -5,7 +5,7 @@ namespace GdprRecord.Server.Feature.Organization.Infrastructure;
 
 using Model;
 
-public class OrganizationContext(DbContextOptions options) : DbContext(options)
+public class OrganizationContext(DbContextOptions<OrganizationContext> options) : DbContext(options)
 {
 	public DbSet<Organization> Organizations { get; set; }
 	public DbSet<Person> People { get; set; }

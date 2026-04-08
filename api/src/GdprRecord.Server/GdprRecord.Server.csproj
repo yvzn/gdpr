@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GdprRecord.Server.Feature.Organization\GdprRecord.Server.Feature.Organization.csproj" />
+	<ProjectReference Include="..\GdprRecord.Server.Feature.ProcessingActivity\GdprRecord.Server.Feature.ProcessingActivity.csproj" />
   </ItemGroup>
 
 </Project>

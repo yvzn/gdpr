@@ -1,5 +1,4 @@
 using Mapster;
-using GdprRecord.Server.Feature.Organization.Queries;
 
 namespace GdprRecord.Server.Feature.Organization.Commands;
 
