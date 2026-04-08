@@ -101,6 +101,32 @@
 					}
 				}
 			}
+		},
+		"processing-activity-feature": {
+			"projectType": "library",
+			"root": "projects/processing-activity-feature",
+			"sourceRoot": "projects/processing-activity-feature/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular/build:ng-packagr",
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/processing-activity-feature/tsconfig.lib.prod.json"
+						},
+						"development": {
+							"tsConfig": "projects/processing-activity-feature/tsconfig.lib.json"
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"test": {
+					"builder": "@angular/build:unit-test",
+					"options": {
+						"tsConfig": "projects/processing-activity-feature/tsconfig.spec.json"
+					}
+				}
+			}
 		}
 	}
 }
