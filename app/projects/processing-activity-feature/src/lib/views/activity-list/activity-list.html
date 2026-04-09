@@ -1,8 +1,12 @@
-<section class="list-container">
-	<header class="list-header">
-		<h1 i18n="@@pa.list.title">Processing Activities</h1>
-		<div class="header-actions">
-			<mat-form-field appearance="outline" class="filter-field" subscriptSizing="dynamic">
+<section class="activity-list">
+	<header class="activity-list__header">
+		<h1 class="activity-list__title" i18n="@@pa.list.title">Processing Activities</h1>
+		<div class="activity-list__header-actions">
+			<mat-form-field
+				appearance="outline"
+				class="activity-list__filter-field"
+				subscriptSizing="dynamic"
+			>
 				<mat-label i18n="@@pa.list.filterLabel">Filter activities</mat-label>
 				<mat-icon matPrefix>search</mat-icon>
 				<input
@@ -34,12 +38,12 @@
 	@if (error(); as errorMsg) {
 	<lib-pa-error-banner [message]="errorMsg" (retried)="retry()" />
 	} @if (loading()) {
-	<div class="card-grid" aria-busy="true" aria-label="Loading processing activities">
+	<div class="activity-list__grid" aria-busy="true" aria-label="Loading processing activities">
 		<lib-pa-skeleton-card [count]="6" />
 	</div>
 	} @else { @if (activities().length === 0) {
-	<div class="empty-state" role="status">
-		<mat-icon class="empty-icon">assignment</mat-icon>
+	<div class="activity-list__empty-state" role="status">
+		<mat-icon class="activity-list__empty-icon">assignment</mat-icon>
 		<p i18n="@@pa.list.empty">No processing activities found.</p>
 		@if (filter()) {
 		<button mat-button (click)="onFilterChange('')" type="button" i18n="@@pa.list.clearFilter">
@@ -52,35 +56,35 @@
 		}
 	</div>
 	} @else {
-	<div class="card-grid" role="list">
+	<div class="activity-list__grid" role="list">
 		@for (activity of activities(); track activity.id) {
-		<div class="card-wrapper" role="listitem">
-			<mat-card class="activity-card" appearance="outlined">
+		<div class="activity-list__card-wrapper" role="listitem">
+			<mat-card class="activity-list__card" appearance="outlined">
 				<mat-card-header>
 					<mat-card-title>{{ activity.description || unnamedActivity }}</mat-card-title>
 					<mat-card-subtitle>
 						@if (activity.reference) {
-						<span i18n="@@pa.list.ref">Ref:</span> {{ activity.reference }}
-						} @else { ID: {{ activity.id }} }
+						<span i18n="@@pa.list.ref">Ref:</span> {{ activity.reference }} } @else { ID: {{
+						activity.id }} }
 					</mat-card-subtitle>
-					<mat-icon class="card-avatar" aria-hidden="true">assignment</mat-icon>
+					<mat-icon class="activity-list__card-avatar" aria-hidden="true">assignment</mat-icon>
 				</mat-card-header>
 				<mat-card-content>
-					<div class="card-details">
+					<div class="activity-list__card-details">
 						@if (activity.created) {
 						<mat-chip-set aria-label="Activity dates">
 							<mat-chip>
 								<mat-icon matChipAvatar>calendar_today</mat-icon>
-								<span i18n="@@pa.list.created">Created</span>:
-								{{ activity.created | date : "mediumDate" }}
+								<span i18n="@@pa.list.created">Created</span>: {{ activity.created | date :
+								"mediumDate" }}
 							</mat-chip>
 						</mat-chip-set>
 						} @if (activity.updated && activity.updated !== activity.created) {
-						<div class="detail-item">
-							<mat-icon class="detail-icon">update</mat-icon>
+						<div class="activity-list__detail-item">
+							<mat-icon class="activity-list__detail-icon">update</mat-icon>
 							<span
-								><span i18n="@@pa.list.updated">Updated</span>:
-								{{ activity.updated | date : "mediumDate" }}</span
+								><span i18n="@@pa.list.updated">Updated</span>: {{ activity.updated | date :
+								"mediumDate" }}</span
 							>
 						</div>
 						}

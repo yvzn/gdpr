@@ -1,34 +1,34 @@
-.list-container {
+.organization-list {
 	padding: 24px;
 	max-width: 1200px;
 	margin: 0 auto;
 }
 
-.list-header {
+.organization-list__header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 16px;
 	margin-bottom: 24px;
-
-	h1 {
-		margin: 0;
-		font-size: 1.75rem;
-	}
 }
 
-.filter-field {
+.organization-list__title {
+	margin: 0;
+	font-size: 1.75rem;
+}
+
+.organization-list__filter-field {
 	min-width: 280px;
 }
 
-.card-grid {
+.organization-list__grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	gap: 16px;
 }
 
-.card-link {
+.organization-list__card-link {
 	text-decoration: none;
 	color: inherit;
 	display: block;
@@ -48,7 +48,7 @@
 	}
 }
 
-.org-card {
+.organization-list__card {
 	height: 100%;
 	cursor: pointer;
 	background-color: var(--mat-sys-surface-container-lowest);
@@ -60,7 +60,7 @@
 	}
 }
 
-.card-avatar {
+.organization-list__card-avatar {
 	font-size: 40px;
 	width: 40px;
 	height: 40px;
@@ -69,14 +69,14 @@
 	flex-shrink: 0;
 }
 
-.card-details {
+.organization-list__card-details {
 	display: flex;
 	gap: 8px;
 	flex-wrap: wrap;
 	margin-top: 8px;
 }
 
-.badge {
+.organization-list__badge {
 	display: inline-flex;
 	align-items: center;
 	padding: 4px 10px;
@@ -86,7 +86,7 @@
 	color: var(--mat-sys-on-secondary-container);
 }
 
-.empty-state {
+.organization-list__empty-state {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -96,7 +96,7 @@
 	color: var(--mat-sys-on-surface-variant);
 }
 
-.empty-icon {
+.organization-list__empty-icon {
 	font-size: 64px;
 	width: 64px;
 	height: 64px;

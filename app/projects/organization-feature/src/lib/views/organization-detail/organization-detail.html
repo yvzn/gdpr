@@ -1,7 +1,7 @@
-<section class="detail-container">
+<section class="organization-detail">
 	<a
 		routerLink="/organizations"
-		class="back-link"
+		class="organization-detail__back-link"
 		aria-label="Back to organizations list"
 		i18n-aria-label="@@org.detail.backAriaLabel"
 	>
@@ -20,12 +20,12 @@
 	<mat-card appearance="outlined">
 		<mat-card-header>
 			<mat-card-title>{{ org.name || unnamedOrg }}</mat-card-title>
-			<mat-icon class="card-icon" aria-hidden="true">business</mat-icon>
+			<mat-icon class="organization-detail__card-icon" aria-hidden="true">business</mat-icon>
 		</mat-card-header>
 
 		<mat-card-content>
-			<form (ngSubmit)="save()" class="detail-form" #orgForm="ngForm">
-				<mat-form-field appearance="outline" class="full-width">
+			<form (ngSubmit)="save()" class="organization-detail__form" #orgForm="ngForm">
+				<mat-form-field appearance="outline" class="organization-detail__full-width">
 					<mat-label i18n="@@org.detail.nameLabel">Organization Name</mat-label>
 					<input
 						matInput
@@ -44,16 +44,20 @@
 				<h2 i18n="@@org.detail.keyPeople">Key People</h2>
 
 				@for (role of personRoles; track role.field) {
-				<div class="person-role-row">
-					<div class="person-role-info">
-						<span class="role-label">{{ role.label }}</span>
+				<div class="organization-detail__person-role-row">
+					<div class="organization-detail__person-role-info">
+						<span class="organization-detail__role-label">{{ role.label }}</span>
 						@if (getPersonNameForRole(role); as personName) {
-						<span class="person-name">{{ personName }}</span>
+						<span class="organization-detail__person-name">{{ personName }}</span>
 						} @else {
-						<span class="person-name unassigned" i18n="@@org.detail.notAssigned">Not assigned</span>
+						<span
+							class="organization-detail__person-name organization-detail__person-name--unassigned"
+							i18n="@@org.detail.notAssigned"
+							>Not assigned</span
+						>
 						}
 					</div>
-					<div class="person-role-actions">
+					<div class="organization-detail__person-role-actions">
 						<button
 							mat-button
 							type="button"

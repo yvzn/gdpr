@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { CreateProcessingActivityPayload, ProcessingActivity } from '../models/processing-activity.model';
+import {
+	CreateProcessingActivityPayload,
+	ProcessingActivity,
+} from '../models/processing-activity.model';
 
 interface ReadAllProcessingActivitiesResponse {
 	processingActivities: ProcessingActivity[];

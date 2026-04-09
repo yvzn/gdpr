@@ -1,10 +1,10 @@
-.detail-container {
+.person-detail {
 	padding: 24px;
 	max-width: 720px;
 	margin: 0 auto;
 }
 
-.back-link {
+.person-detail__back-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 4px;
@@ -20,7 +20,7 @@
 	}
 }
 
-.card-icon {
+.person-detail__card-icon {
 	font-size: 32px;
 	width: 32px;
 	height: 32px;
@@ -29,18 +29,18 @@
 	flex-shrink: 0;
 }
 
-.detail-form {
+.person-detail__form {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 	padding-top: 16px;
 }
 
-.full-width {
+.person-detail__full-width {
 	width: 100%;
 }
 
-.form-row {
+.person-detail__form-row {
 	display: flex;
 	gap: 16px;
 
@@ -50,7 +50,7 @@
 	}
 }
 
-.half-width {
+.person-detail__half-width {
 	flex: 1;
 }
 

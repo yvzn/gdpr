@@ -1,4 +1,4 @@
-header {
+.main-menu__header {
 	display: flex;
 	justify-content: flex-end;
 	padding-top: calc(var(--spacing) * 3 / 4);
@@ -6,7 +6,7 @@ header {
 }
 
 @media screen and (max-width: 599px) {
-	header {
+	.main-menu__header {
 		padding-top: calc(var(--spacing) / 2);
 	}
 }

@@ -1,5 +1,6 @@
-<header>
+<header class="main-menu__header">
 	<button
+		class="main-menu__close"
 		mat-icon-button
 		aria-label="Close menu"
 		i18n-aria-label="@@app.menu.close"
@@ -19,6 +20,7 @@
 		#rla="routerLinkActive"
 		[activated]="rla.isActive"
 		(click)="closeMenu()"
+		class="main-menu__item"
 	>
 		<span matListItemIcon>
 			<mat-icon>{{ item.icon }}</mat-icon>
@@ -30,7 +32,7 @@
 	<mat-divider></mat-divider>
 
 	@for (link of navigationLinks; track link) {
-	<a mat-list-item [href]="link.url" target="_blank" (click)="closeMenu()">
+	<a mat-list-item [href]="link.url" target="_blank" (click)="closeMenu()" class="main-menu__item">
 		<span matListItemIcon>
 			<mat-icon>{{ link.icon }}</mat-icon>
 		</span>

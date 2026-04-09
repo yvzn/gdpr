@@ -1,10 +1,10 @@
-.detail-container {
+.activity-create {
 	padding: 24px;
 	max-width: 720px;
 	margin: 0 auto;
 }
 
-.back-link {
+.activity-create__back-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 4px;
@@ -20,7 +20,7 @@
 	}
 }
 
-.card-icon {
+.activity-create__card-icon {
 	font-size: 32px;
 	width: 32px;
 	height: 32px;
@@ -29,14 +29,14 @@
 	flex-shrink: 0;
 }
 
-.detail-form {
+.activity-create__form {
 	display: flex;
 	flex-direction: column;
 	gap: 4px;
 	padding-top: 16px;
 }
 
-.full-width {
+.activity-create__full-width {
 	width: 100%;
 }
 

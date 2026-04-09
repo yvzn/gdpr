@@ -19,8 +19,7 @@ export const selectFilteredActivities = createSelector(
 		if (!term) return activities;
 		return activities.filter(
 			(a) =>
-				a.description?.toLowerCase().includes(term) ||
-				a.reference?.toLowerCase().includes(term),
+				a.description?.toLowerCase().includes(term) || a.reference?.toLowerCase().includes(term),
 		);
 	},
 );

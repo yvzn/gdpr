@@ -1,7 +1,7 @@
-<section class="detail-container">
+<section class="activity-create">
 	<a
 		routerLink="/processing-activities"
-		class="back-link"
+		class="activity-create__back-link"
 		aria-label="Back to processing activities list"
 		i18n-aria-label="@@pa.create.backAriaLabel"
 	>
@@ -22,12 +22,12 @@
 	<mat-card appearance="outlined">
 		<mat-card-header>
 			<mat-card-title i18n="@@pa.create.title">New Processing Activity</mat-card-title>
-			<mat-icon class="card-icon" aria-hidden="true">add_task</mat-icon>
+			<mat-icon class="activity-create__card-icon" aria-hidden="true">add_task</mat-icon>
 		</mat-card-header>
 
 		<mat-card-content>
-			<form [formGroup]="activityForm" (ngSubmit)="onSubmit()" class="detail-form">
-				<mat-form-field appearance="outline" class="full-width">
+			<form [formGroup]="activityForm" (ngSubmit)="onSubmit()" class="activity-create__form">
+				<mat-form-field appearance="outline" class="activity-create__full-width">
 					<mat-label i18n="@@pa.create.descriptionLabel">Description</mat-label>
 					<textarea
 						matInput
@@ -43,9 +43,7 @@
 					>
 					@if (activityForm.get("description")?.hasError("required") &&
 					activityForm.get("description")?.touched) {
-					<mat-error i18n="@@pa.create.descriptionRequired"
-						>Description is required.</mat-error
-					>
+					<mat-error i18n="@@pa.create.descriptionRequired">Description is required.</mat-error>
 					} @if (activityForm.get("description")?.hasError("maxlength")) {
 					<mat-error i18n="@@pa.create.descriptionMaxLength"
 						>Description must not exceed 500 characters.</mat-error
@@ -53,7 +51,7 @@
 					}
 				</mat-form-field>
 
-				<mat-form-field appearance="outline" class="full-width">
+				<mat-form-field appearance="outline" class="activity-create__full-width">
 					<mat-label i18n="@@pa.create.referenceLabel">Reference</mat-label>
 					<input
 						matInput
@@ -71,19 +69,10 @@
 				</mat-form-field>
 
 				<mat-card-actions align="end">
-					<a
-						mat-button
-						routerLink="/processing-activities"
-						type="button"
-						i18n="@@common.cancel"
+					<a mat-button routerLink="/processing-activities" type="button" i18n="@@common.cancel"
 						>Cancel</a
 					>
-					<button
-						mat-flat-button
-						type="submit"
-						[disabled]="saving()"
-						i18n="@@common.create"
-					>
+					<button mat-flat-button type="submit" [disabled]="saving()" i18n="@@common.create">
 						Create
 					</button>
 				</mat-card-actions>

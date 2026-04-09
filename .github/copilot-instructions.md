@@ -200,7 +200,7 @@ projects/
 - Use `input()`/`output()` signal functions, not decorators.
 - Use native control flow (`@if`, `@for`, `@switch`), not structural directives.
 - Use `inject()` function, not constructor injection.
-- SCSS for styles, Angular Material for UI.
+- SCSS for styles (with BEM methodology), Angular Material for UI.
 - Feature libraries are imported via relative paths in `app.routes.ts`, not npm package paths.
 - `tsconfig.json` path mappings point `organization-feature` and `processing-activity-feature` to `./dist/` (built library output), but the app build resolves source directly.
 - Organization feature uses **NgRx Signal Store**. Processing activity feature uses **NgRx classic Store** (actions/effects/reducer/selectors pattern).

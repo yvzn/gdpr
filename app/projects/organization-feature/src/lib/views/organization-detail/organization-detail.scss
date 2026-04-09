@@ -1,10 +1,10 @@
-.detail-container {
+.organization-detail {
 	padding: 24px;
 	max-width: 720px;
 	margin: 0 auto;
 }
 
-.back-link {
+.organization-detail__back-link {
 	display: inline-flex;
 	align-items: center;
 	gap: 4px;
@@ -20,7 +20,7 @@
 	}
 }
 
-.card-icon {
+.organization-detail__card-icon {
 	font-size: 32px;
 	width: 32px;
 	height: 32px;
@@ -29,24 +29,24 @@
 	flex-shrink: 0;
 }
 
-.detail-form {
+.organization-detail__form {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
 	padding-top: 16px;
-
-	h2 {
-		margin: 8px 0 0;
-		font-size: 1.1rem;
-		color: var(--mat-sys-on-surface-variant);
-	}
 }
 
-.full-width {
+.organization-detail__form h2 {
+	margin: 8px 0 0;
+	font-size: 1.1rem;
+	color: var(--mat-sys-on-surface-variant);
+}
+
+.organization-detail__full-width {
 	width: 100%;
 }
 
-.person-role-row {
+.organization-detail__person-role-row {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -59,29 +59,29 @@
 	}
 }
 
-.person-role-info {
+.organization-detail__person-role-info {
 	display: flex;
 	flex-direction: column;
 	gap: 2px;
 }
 
-.role-label {
+.organization-detail__role-label {
 	font-size: 0.75rem;
 	color: var(--mat-sys-on-surface-variant);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }
 
-.person-name {
+.organization-detail__person-name {
 	font-size: 0.95rem;
-
-	&.unassigned {
-		color: var(--mat-sys-on-surface-variant);
-		font-style: italic;
-	}
 }
 
-.person-role-actions {
+.organization-detail__person-name--unassigned {
+	color: var(--mat-sys-on-surface-variant);
+	font-style: italic;
+}
+
+.organization-detail__person-role-actions {
 	display: flex;
 	align-items: center;
 	gap: 4px;

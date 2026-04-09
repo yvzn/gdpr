@@ -1,46 +1,46 @@
-.list-container {
+.activity-list {
 	padding: 24px;
 	max-width: 1200px;
 	margin: 0 auto;
 }
 
-.list-header {
+.activity-list__header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 16px;
 	margin-bottom: 24px;
-
-	h1 {
-		margin: 0;
-		font-size: 1.75rem;
-	}
 }
 
-.header-actions {
+.activity-list__title {
+	margin: 0;
+	font-size: 1.75rem;
+}
+
+.activity-list__header-actions {
 	display: flex;
 	align-items: center;
 	gap: 16px;
 	flex-wrap: wrap;
 }
 
-.filter-field {
+.activity-list__filter-field {
 	min-width: 280px;
 }
 
-.card-grid {
+.activity-list__grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	gap: 16px;
 }
 
-.card-wrapper {
+.activity-list__card-wrapper {
 	display: block;
 	border-radius: 12px;
 }
 
-.activity-card {
+.activity-list__card {
 	height: 100%;
 	background-color: var(--mat-sys-surface-container-lowest);
 
@@ -51,7 +51,7 @@
 	}
 }
 
-.card-avatar {
+.activity-list__card-avatar {
 	font-size: 40px;
 	width: 40px;
 	height: 40px;
@@ -60,14 +60,14 @@
 	flex-shrink: 0;
 }
 
-.card-details {
+.activity-list__card-details {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
 	margin-top: 8px;
 }
 
-.detail-item {
+.activity-list__detail-item {
 	display: flex;
 	align-items: center;
 	gap: 8px;
@@ -75,13 +75,13 @@
 	color: var(--mat-sys-on-surface-variant);
 }
 
-.detail-icon {
+.activity-list__detail-icon {
 	font-size: 18px;
 	width: 18px;
 	height: 18px;
 }
 
-.empty-state {
+.activity-list__empty-state {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -91,7 +91,7 @@
 	color: var(--mat-sys-on-surface-variant);
 }
 
-.empty-icon {
+.activity-list__empty-icon {
 	font-size: 64px;
 	width: 64px;
 	height: 64px;
@@ -103,22 +103,22 @@ mat-paginator {
 }
 
 @media (max-width: 599px) {
-	.list-header {
+	.activity-list__header {
 		flex-direction: column;
 		align-items: stretch;
 	}
 
-	.header-actions {
+	.activity-list__header-actions {
 		flex-direction: column;
 		align-items: stretch;
 	}
 
-	.filter-field {
+	.activity-list__filter-field {
 		min-width: unset;
 		width: 100%;
 	}
 
-	.card-grid {
+	.activity-list__grid {
 		grid-template-columns: 1fr;
 	}
 }

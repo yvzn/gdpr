@@ -1,7 +1,7 @@
 <h2 mat-dialog-title i18n="@@org.picker.title">Select {{ data.roleLabel }}</h2>
 
-<mat-dialog-content>
-	<mat-form-field appearance="outline" class="search-field">
+<mat-dialog-content class="people-picker-dialog">
+	<mat-form-field appearance="outline" class="people-picker-dialog__search-field">
 		<mat-label i18n="@@org.picker.searchLabel">Search people</mat-label>
 		<mat-icon matPrefix>search</mat-icon>
 		<input
@@ -17,31 +17,37 @@
 		/>
 	</mat-form-field>
 
-	<div class="people-list" role="listbox" [attr.aria-label]="'Select ' + data.roleLabel">
+	<div
+		class="people-picker-dialog__list"
+		role="listbox"
+		[attr.aria-label]="'Select ' + data.roleLabel"
+	>
 		@if (filteredPeople().length === 0) {
-		<p class="no-results" i18n="@@org.picker.empty">No people found.</p>
+		<p class="people-picker-dialog__no-results" i18n="@@org.picker.empty">No people found.</p>
 		} @else { @for (person of filteredPeople(); track person.id) {
 		<button
-			class="person-option"
-			[class.selected]="isSelected(person)"
+			class="people-picker-dialog__option"
+			[class.people-picker-dialog__option--selected]="isSelected(person)"
 			(click)="selectPerson(person)"
 			type="button"
 			role="option"
 			[attr.aria-selected]="isSelected(person)"
 			[attr.aria-label]="person.fullName || 'Unnamed person'"
 		>
-			<mat-icon class="person-icon" aria-hidden="true">person</mat-icon>
-			<div class="person-info">
-				<span class="person-name">{{ person.fullName || unnamedPerson }}</span>
+			<mat-icon class="people-picker-dialog__person-icon" aria-hidden="true">person</mat-icon>
+			<div class="people-picker-dialog__person-info">
+				<span class="people-picker-dialog__person-name"
+					>{{ person.fullName || unnamedPerson }}</span
+				>
 				@if (person.email || person.company) {
-				<span class="person-sub">
+				<span class="people-picker-dialog__person-sub">
 					@if (person.company) { {{ person.company }} } @if (person.company && person.email) {
 					&mdash; } @if (person.email) { {{ person.email }} }
 				</span>
 				}
 			</div>
 			@if (isSelected(person)) {
-			<mat-icon class="check-icon">check_circle</mat-icon>
+			<mat-icon class="people-picker-dialog__check-icon">check_circle</mat-icon>
 			}
 		</button>
 		} }

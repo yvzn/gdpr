@@ -20,7 +20,7 @@
 	gap: 12px;
 }
 
-.skeleton-line {
+.skeleton-card__line {
 	height: 16px;
 	border-radius: 4px;
 	background: linear-gradient(
@@ -33,15 +33,15 @@
 	animation: shimmer 1.5s ease-in-out infinite;
 }
 
-.skeleton-title {
+.skeleton-card__line--title {
 	width: 60%;
 	height: 20px;
 }
 
-.skeleton-subtitle {
+.skeleton-card__line--subtitle {
 	width: 40%;
 }
 
-.skeleton-text {
+.skeleton-card__line--text {
 	width: 80%;
 }

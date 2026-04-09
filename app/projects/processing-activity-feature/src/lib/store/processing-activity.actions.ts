@@ -1,5 +1,8 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { CreateProcessingActivityPayload, ProcessingActivity } from '../models/processing-activity.model';
+import {
+	CreateProcessingActivityPayload,
+	ProcessingActivity,
+} from '../models/processing-activity.model';
 
 export const ProcessingActivityActions = createActionGroup({
 	source: 'Processing Activity',

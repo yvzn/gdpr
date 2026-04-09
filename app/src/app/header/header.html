@@ -1,7 +1,8 @@
-<mat-toolbar>
-	<a routerLink="/" class="logo" i18n="@@app.logo"> 🛡️ GDPR RoPA </a>
-	<span class="example-spacer"></span>
+<mat-toolbar class="app-header">
+	<a routerLink="/" class="app-header__logo" i18n="@@app.logo"> 🛡️ GDPR RoPA </a>
+	<span class="app-header__spacer"></span>
 	<button
+		class="app-header__action"
 		mat-icon-button
 		[matMenuTriggerFor]="langMenu"
 		aria-label="Change language"
@@ -19,6 +20,7 @@
 		</button>
 	</mat-menu>
 	<button
+		class="app-header__action"
 		mat-icon-button
 		aria-label="Menu"
 		i18n-aria-label="@@app.menu.open"

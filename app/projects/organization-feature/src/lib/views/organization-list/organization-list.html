@@ -1,7 +1,7 @@
-<section class="list-container">
-	<header class="list-header">
-		<h1 i18n="@@org.list.title">Organizations</h1>
-		<mat-form-field appearance="outline" class="filter-field">
+<section class="organization-list">
+	<header class="organization-list__header">
+		<h1 class="organization-list__title" i18n="@@org.list.title">Organizations</h1>
+		<mat-form-field appearance="outline" class="organization-list__filter-field">
 			<mat-label i18n="@@org.list.filterLabel">Filter organizations</mat-label>
 			<mat-icon matPrefix>search</mat-icon>
 			<input
@@ -20,12 +20,12 @@
 	@if (store.error(); as error) {
 	<lib-error-banner [message]="error" (retried)="retry()" />
 	} @if (store.loading()) {
-	<div class="card-grid" aria-busy="true" aria-label="Loading organizations">
+	<div class="organization-list__grid" aria-busy="true" aria-label="Loading organizations">
 		<lib-skeleton-card [count]="6" />
 	</div>
 	} @else { @if (store.paginatedOrganizations().length === 0) {
-	<div class="empty-state" role="status">
-		<mat-icon class="empty-icon">business</mat-icon>
+	<div class="organization-list__empty-state" role="status">
+		<mat-icon class="organization-list__empty-icon">business</mat-icon>
 		<p i18n="@@org.list.empty">No organizations found.</p>
 		@if (store.filter()) {
 		<button mat-button (click)="onFilterChange('')" type="button" i18n="@@org.list.clearFilter">
@@ -34,26 +34,28 @@
 		}
 	</div>
 	} @else {
-	<div class="card-grid" role="list">
+	<div class="organization-list__grid" role="list">
 		@for (org of store.paginatedOrganizations(); track org.id) {
 		<a
 			[routerLink]="['/organizations', org.id]"
-			class="card-link"
+			class="organization-list__card-link"
 			role="listitem"
 			[attr.aria-label]="'View organization: ' + (org.name || 'Unnamed')"
 		>
-			<mat-card class="org-card" appearance="outlined">
+			<mat-card class="organization-list__card" appearance="outlined">
 				<mat-card-header>
 					<mat-card-title>{{ org.name || unnamedOrg }}</mat-card-title>
 					<mat-card-subtitle>ID: {{ org.id }}</mat-card-subtitle>
-					<mat-icon class="card-avatar" aria-hidden="true">business</mat-icon>
+					<mat-icon class="organization-list__card-avatar" aria-hidden="true">business</mat-icon>
 				</mat-card-header>
 				<mat-card-content>
-					<div class="card-details">
+					<div class="organization-list__card-details">
 						@if (org.controllerId) {
-						<span class="badge" i18n="@@org.list.controllerAssigned">Controller assigned</span>
+						<span class="organization-list__badge" i18n="@@org.list.controllerAssigned"
+							>Controller assigned</span
+						>
 						} @if (org.dataProtectionOfficerId) {
-						<span class="badge" i18n="@@org.list.dpoAssigned">DPO assigned</span>
+						<span class="organization-list__badge" i18n="@@org.list.dpoAssigned">DPO assigned</span>
 						}
 					</div>
 				</mat-card-content>
