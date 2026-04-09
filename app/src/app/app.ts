@@ -1,6 +1,7 @@
 import { Component, viewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
+import '@angular/localize';
 
 import { HeaderComponent } from './header/header';
 import { MainMenuComponent } from './main-menu/main-menu';
