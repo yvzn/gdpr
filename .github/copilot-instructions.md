@@ -22,6 +22,27 @@ There are no CI/CD pipelines or GitHub Actions workflows configured.
 | TypeScript | 5.9.x |
 | EF Core CLI | 10.0.5 (local tool) |
 
+## UX Considerations
+
+### Use the List / Details pattern for all entities
+For example:
+- Card-based list of all activities (no tables, use cards for layout)
+- Form to create or update a new processing activity
+- Client-side filtering and pagination for the list
+
+### Shared Requirements
+- Prefer Angular ReactiveForms with Angular Material components (do not use template-driven forms)
+- Prefer NGRX for state management, including actions / action creators, reducers, selectors, and effects for API interactions
+- Keep HTML templates in separate files from component logic
+- internationalize the application using the Angular localize package
+- Put all related code (routing, views, components, etc.) in the corresponding Angular library, for increased modularity and avoiding large shared modules
+- Use skeleton placeholders during HTTP requests to keep the user waiting
+- Provide clear, actionnable user feedback
+- Ensure keyboard accessibility and accessibility for impaired users
+- Maintain consistent styling within the application, using Angular Material theming, appropriate spacing and icons, and responsive design for different screen sizes
+
+Make sure all UI flows have clean UX with card views and easy navigation between lists and details. Prioritize maintainable code structure and reuse components where feasible.
+
 ## Build & Validate — API (`api/`)
 
 Always run commands from the `api/` directory.
