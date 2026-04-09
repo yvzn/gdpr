@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GdprRecord.Server.Feature.Organization.Queries;
 
-internal record ReadAllPeopleQuery : IQuery<ReadAllPeopleResponse>;
+public record ReadAllPeopleQuery : IQuery<ReadAllPeopleResponse>;
 
-internal record ReadAllPeopleResponse(ICollection<Model.Person> People);
+public record ReadAllPeopleResponse(ICollection<Model.Person> People);
 
-internal class ReadAllPeopleQueryHandler(OrganizationContext database) : IQueryHandler<ReadAllPeopleQuery, ReadAllPeopleResponse>
+public class ReadAllPeopleQueryHandler(OrganizationContext database) : IQueryHandler<ReadAllPeopleQuery, ReadAllPeopleResponse>
 {
 	public async ValueTask<Result<ReadAllPeopleResponse>> Handle(ReadAllPeopleQuery query, CancellationToken cancellationToken)
 	{

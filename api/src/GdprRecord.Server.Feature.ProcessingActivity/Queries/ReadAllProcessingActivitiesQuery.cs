@@ -4,18 +4,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GdprRecord.Server.Feature.ProcessingActivity.Queries;
 
-internal record ReadAllProcessingActivitiesQuery : IQuery<ReadAllProcessingActivitiesResponse>;
+public record ReadAllProcessingActivitiesQuery : IQuery<ReadAllProcessingActivitiesResponse>;
 
-internal record ReadAllProcessingActivitiesResponse(ICollection<ProcessingActivityItem> ProcessingActivities);
+public record ReadAllProcessingActivitiesResponse(ICollection<ProcessingActivityItem> ProcessingActivities);
 
-internal record ProcessingActivityItem(
+public record ProcessingActivityItem(
 	int Id,
 	string? Description,
 	string? Reference,
 	DateTimeOffset? Created,
 	DateTimeOffset? Updated);
 
-internal class ReadAllProcessingActivitiesQueryHandler(
+public class ReadAllProcessingActivitiesQueryHandler(
 	ProcessingActivityContext database
 	) : IQueryHandler<ReadAllProcessingActivitiesQuery, ReadAllProcessingActivitiesResponse>
 {

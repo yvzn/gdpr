@@ -18,7 +18,7 @@ public record UpdatePersonCommand(
 	string? Company
 	) : ICommand<UpdatePersonResponse>;
 
-internal class UpdatePersonCommandHandler(
+public class UpdatePersonCommandHandler(
 	OrganizationContext database,
 	ILogger<UpdatePersonCommandHandler> logger
 	) : ICommandHandler<UpdatePersonCommand, UpdatePersonResponse>

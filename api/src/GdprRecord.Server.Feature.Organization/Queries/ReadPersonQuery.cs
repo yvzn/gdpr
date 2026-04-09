@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GdprRecord.Server.Feature.Organization.Queries;
 
-internal record ReadPersonQuery(int Id) : IQuery<Model.Person>;
+public record ReadPersonQuery(int Id) : IQuery<Model.Person>;
 
-internal class ReadPersonQueryHandler(OrganizationContext database) : IQueryHandler<ReadPersonQuery, Model.Person>
+public class ReadPersonQueryHandler(OrganizationContext database) : IQueryHandler<ReadPersonQuery, Model.Person>
 {
 	public async ValueTask<Result<Model.Person>> Handle(ReadPersonQuery request, CancellationToken cancellationToken)
 	{

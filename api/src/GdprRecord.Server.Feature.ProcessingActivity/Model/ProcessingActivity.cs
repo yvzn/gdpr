@@ -20,38 +20,38 @@ public class ProcessingActivity
 	public ICollection<SecurityMeasure> SecurityMeasures { get; set; } = [];
 }
 
-public class Purpose: HasProcessActivity
+public class Purpose : HasProcessActivity
 {
 	public int Id { get; set; }
 	public string? Description { get; set; }
 }
 
-public class PersonalData: PersonalDataCategory { }
+public class PersonalData : PersonalDataCategory { }
 
-public class SensitiveData: PersonalDataCategory { }
+public class SensitiveData : PersonalDataCategory { }
 
-public class PersonalDataCategory: HasProcessActivity
+public class PersonalDataCategory : HasProcessActivity
 {
 	public int Id { get; set; }
 	public string? Description { get; set; }
 	public string? StoragePeriod { get; set; }
 }
 
-public class DataSubject: HasProcessActivity
+public class DataSubject : HasProcessActivity
 {
 	public int Id { get; set; }
 	public string? Type { get; set; }
 	public string? Description { get; set; }
 }
 
-public class Recipient: HasProcessActivity
+public class Recipient : HasProcessActivity
 {
 	public int Id { get; set; }
 	public string? Type { get; set; }
 	public string? Description { get; set; }
 }
 
-public class InternationalRecipient: HasProcessActivity
+public class InternationalRecipient : HasProcessActivity
 {
 	public int Id { get; set; }
 	public string? Description { get; set; }
@@ -60,7 +60,7 @@ public class InternationalRecipient: HasProcessActivity
 	public string? Documentation { get; set; }
 }
 
-public class SecurityMeasure: HasProcessActivity
+public class SecurityMeasure : HasProcessActivity
 {
 	public int Id { get; set; }
 	public string? Type { get; set; }

@@ -10,7 +10,7 @@ public record CreateProcessingActivityCommand(
 	string? Reference
 	) : ICommand<CreateProcessingActivityResponse>;
 
-internal class CreateProcessingActivityCommandHandler(
+public class CreateProcessingActivityCommandHandler(
 	ProcessingActivityContext database,
 	ILogger<CreateProcessingActivityCommandHandler> logger
 	) : ICommandHandler<CreateProcessingActivityCommand, CreateProcessingActivityResponse>

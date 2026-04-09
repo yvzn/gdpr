@@ -15,8 +15,6 @@ public static class IServicesCollectionExtensions
 {
 	public static IServiceCollection AddOrganizationFeature(this IServiceCollection services)
 	{
-		services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
-
 		TypeAdapterConfig.GlobalSettings.Scan(typeof(IOrganizationFeature).Assembly);
 
 		services.AddControllers()

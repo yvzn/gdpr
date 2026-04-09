@@ -15,7 +15,7 @@ public record UpdateOrganizationCommand(
 	int? ControllersRepresentativeId,
 	int? DataProtectionOfficerId) : ICommand<UpdateOrganizationResponse>;
 
-internal class CreateOrUpdateOrganizationCommandHandler(
+public class CreateOrUpdateOrganizationCommandHandler(
 	OrganizationContext database,
 	ILogger<CreateOrUpdateOrganizationCommandHandler> logger
 	) : ICommandHandler<UpdateOrganizationCommand, UpdateOrganizationResponse>

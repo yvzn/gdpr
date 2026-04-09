@@ -6,11 +6,11 @@ public class Organization
 	public string? Name { get; set; }
 	public int? ControllerId { get; set; }
 	public Person? Controller { get; set; }
-	public int? JointControllerId {get; set; }
+	public int? JointControllerId { get; set; }
 	public Person? JointController { get; set; }
-	public int? ControllersRepresentativeId {get; set; }
+	public int? ControllersRepresentativeId { get; set; }
 	public Person? ControllersRepresentative { get; set; }
-	public int? DataProtectionOfficerId {get; set; }
+	public int? DataProtectionOfficerId { get; set; }
 	public Person? DataProtectionOfficer { get; set; }
 }
 

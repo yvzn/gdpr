@@ -15,8 +15,6 @@ public static class IServicesCollectionExtensions
 {
 	public static IServiceCollection AddProcessingActivityFeature(this IServiceCollection services)
 	{
-		services.AddMediator(options => options.ServiceLifetime = ServiceLifetime.Scoped);
-
 		TypeAdapterConfig.GlobalSettings.Scan(typeof(IProcessingActivityFeature).Assembly);
 
 		services.AddControllers()

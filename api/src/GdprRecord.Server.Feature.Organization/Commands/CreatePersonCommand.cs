@@ -16,7 +16,7 @@ public record CreatePersonCommand(
 	string? Company
 	) : ICommand<CreatePersonResponse>;
 
-internal class CreatePersonCommandHandler(
+public class CreatePersonCommandHandler(
 	OrganizationContext database,
 	ILogger<CreatePersonCommandHandler> logger
 	) : ICommandHandler<CreatePersonCommand, CreatePersonResponse>

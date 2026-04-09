@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GdprRecord.Server.Feature.Organization.Queries;
 
-internal record ReadAllOrganizationsQuery : IQuery<ReadAllOrganizationsResponse>;
+public record ReadAllOrganizationsQuery : IQuery<ReadAllOrganizationsResponse>;
 
-internal record ReadAllOrganizationsResponse(ICollection<Organization> Organizations);
+public record ReadAllOrganizationsResponse(ICollection<Organization> Organizations);
 
-internal record Organization(
+public record Organization(
 	int Id,
 	string? Name,
 	int? ControllerId,
@@ -16,7 +16,7 @@ internal record Organization(
 	int? ControllersRepresentativeId,
 	int? DataProtectionOfficerId);
 
-internal class ReadAllOrganizationsQueryHandler(
+public class ReadAllOrganizationsQueryHandler(
 	OrganizationContext database
 	) : IQueryHandler<ReadAllOrganizationsQuery, ReadAllOrganizationsResponse>
 {
