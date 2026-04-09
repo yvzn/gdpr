@@ -1,0 +1,106 @@
+<section class="list-container">
+	<header class="list-header">
+		<h1 i18n="@@pa.list.title">Processing Activities</h1>
+		<div class="header-actions">
+			<mat-form-field appearance="outline" class="filter-field" subscriptSizing="dynamic">
+				<mat-label i18n="@@pa.list.filterLabel">Filter activities</mat-label>
+				<mat-icon matPrefix>search</mat-icon>
+				<input
+					matInput
+					type="search"
+					[ngModel]="filter()"
+					(ngModelChange)="onFilterChange($event)"
+					placeholder="Search by description or reference..."
+					i18n-placeholder="@@pa.list.searchPlaceholder"
+					aria-label="Filter activities by description or reference"
+					i18n-aria-label="@@pa.list.filterAriaLabel"
+				/>
+			</mat-form-field>
+			<a
+				mat-fab
+				extended
+				routerLink="/processing-activities/new"
+				matTooltip="Create a new processing activity"
+				i18n-matTooltip="@@pa.list.addTooltip"
+				aria-label="Create a new processing activity"
+				i18n-aria-label="@@pa.list.addTooltip"
+			>
+				<mat-icon>add</mat-icon>
+				<span i18n="@@pa.list.add">New Activity</span>
+			</a>
+		</div>
+	</header>
+
+	@if (error(); as errorMsg) {
+	<lib-pa-error-banner [message]="errorMsg" (retried)="retry()" />
+	} @if (loading()) {
+	<div class="card-grid" aria-busy="true" aria-label="Loading processing activities">
+		<lib-pa-skeleton-card [count]="6" />
+	</div>
+	} @else { @if (activities().length === 0) {
+	<div class="empty-state" role="status">
+		<mat-icon class="empty-icon">assignment</mat-icon>
+		<p i18n="@@pa.list.empty">No processing activities found.</p>
+		@if (filter()) {
+		<button mat-button (click)="onFilterChange('')" type="button" i18n="@@pa.list.clearFilter">
+			Clear filter
+		</button>
+		} @else {
+		<a mat-button routerLink="/processing-activities/new" i18n="@@pa.list.createFirst">
+			Create your first activity
+		</a>
+		}
+	</div>
+	} @else {
+	<div class="card-grid" role="list">
+		@for (activity of activities(); track activity.id) {
+		<div class="card-wrapper" role="listitem">
+			<mat-card class="activity-card" appearance="outlined">
+				<mat-card-header>
+					<mat-card-title>{{ activity.description || unnamedActivity }}</mat-card-title>
+					<mat-card-subtitle>
+						@if (activity.reference) {
+						<span i18n="@@pa.list.ref">Ref:</span> {{ activity.reference }}
+						} @else { ID: {{ activity.id }} }
+					</mat-card-subtitle>
+					<mat-icon class="card-avatar" aria-hidden="true">assignment</mat-icon>
+				</mat-card-header>
+				<mat-card-content>
+					<div class="card-details">
+						@if (activity.created) {
+						<mat-chip-set aria-label="Activity dates">
+							<mat-chip>
+								<mat-icon matChipAvatar>calendar_today</mat-icon>
+								<span i18n="@@pa.list.created">Created</span>:
+								{{ activity.created | date : "mediumDate" }}
+							</mat-chip>
+						</mat-chip-set>
+						} @if (activity.updated && activity.updated !== activity.created) {
+						<div class="detail-item">
+							<mat-icon class="detail-icon">update</mat-icon>
+							<span
+								><span i18n="@@pa.list.updated">Updated</span>:
+								{{ activity.updated | date : "mediumDate" }}</span
+							>
+						</div>
+						}
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</div>
+		}
+	</div>
+
+	<mat-paginator
+		[length]="totalCount()"
+		[pageSize]="pageSize()"
+		[pageIndex]="page()"
+		[pageSizeOptions]="[6, 12, 24]"
+		(page)="onPageChange($event)"
+		aria-label="Processing activities pagination"
+		i18n-aria-label="@@pa.list.paginationAriaLabel"
+		showFirstLastButtons
+	>
+	</mat-paginator>
+	} }
+</section>

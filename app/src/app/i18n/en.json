@@ -5,6 +5,7 @@
 	"app.menu.home": "Home",
 	"app.menu.organizations": "Organizations",
 	"app.menu.people": "People",
+	"app.menu.processingActivities": "Processing Activities",
 	"app.menu.sourceCode": "Source code",
 	"app.language": "Change language"
 }

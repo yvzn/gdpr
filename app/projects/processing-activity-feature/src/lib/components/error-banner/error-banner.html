@@ -1,0 +1,7 @@
+<div class="error-banner" role="alert">
+	<mat-icon>error_outline</mat-icon>
+	<span class="error-message">{{ message() }}</span>
+	<button mat-button color="warn" (click)="retry()" type="button" i18n="@@common.retry">
+		Retry
+	</button>
+</div>

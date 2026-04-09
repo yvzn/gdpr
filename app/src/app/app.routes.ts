@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { processingActivityFeatureRoutes } from '../../projects/processing-activity-feature/src/lib/processing-activity-feature.routes';
 
 export const routes: Routes = [
 	{
@@ -29,4 +30,5 @@ export const routes: Routes = [
 				(m) => m.PersonDetailComponent,
 			),
 	},
+	...processingActivityFeatureRoutes,
 ];

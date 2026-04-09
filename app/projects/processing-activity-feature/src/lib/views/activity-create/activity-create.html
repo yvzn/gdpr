@@ -1,0 +1,93 @@
+<section class="detail-container">
+	<a
+		routerLink="/processing-activities"
+		class="back-link"
+		aria-label="Back to processing activities list"
+		i18n-aria-label="@@pa.create.backAriaLabel"
+	>
+		<mat-icon>arrow_back</mat-icon>
+		<span i18n="@@pa.create.back">Back to Processing Activities</span>
+	</a>
+
+	@if (error(); as errorMsg) {
+	<lib-pa-error-banner [message]="errorMsg" (retried)="retry()" />
+	} @if (saving()) {
+	<mat-progress-bar
+		mode="indeterminate"
+		aria-label="Creating processing activity"
+		i18n-aria-label="@@pa.create.savingAriaLabel"
+	/>
+	}
+
+	<mat-card appearance="outlined">
+		<mat-card-header>
+			<mat-card-title i18n="@@pa.create.title">New Processing Activity</mat-card-title>
+			<mat-icon class="card-icon" aria-hidden="true">add_task</mat-icon>
+		</mat-card-header>
+
+		<mat-card-content>
+			<form [formGroup]="activityForm" (ngSubmit)="onSubmit()" class="detail-form">
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label i18n="@@pa.create.descriptionLabel">Description</mat-label>
+					<textarea
+						matInput
+						formControlName="description"
+						rows="4"
+						placeholder="Describe the processing activity..."
+						i18n-placeholder="@@pa.create.descriptionPlaceholder"
+						aria-label="Processing activity description"
+						i18n-aria-label="@@pa.create.descriptionLabel"
+					></textarea>
+					<mat-hint align="end"
+						>{{ activityForm.get("description")?.value?.length || 0 }} / 500</mat-hint
+					>
+					@if (activityForm.get("description")?.hasError("required") &&
+					activityForm.get("description")?.touched) {
+					<mat-error i18n="@@pa.create.descriptionRequired"
+						>Description is required.</mat-error
+					>
+					} @if (activityForm.get("description")?.hasError("maxlength")) {
+					<mat-error i18n="@@pa.create.descriptionMaxLength"
+						>Description must not exceed 500 characters.</mat-error
+					>
+					}
+				</mat-form-field>
+
+				<mat-form-field appearance="outline" class="full-width">
+					<mat-label i18n="@@pa.create.referenceLabel">Reference</mat-label>
+					<input
+						matInput
+						formControlName="reference"
+						placeholder="Enter a reference code (optional)"
+						i18n-placeholder="@@pa.create.referencePlaceholder"
+						aria-label="Processing activity reference"
+						i18n-aria-label="@@pa.create.referenceLabel"
+					/>
+					@if (activityForm.get("reference")?.hasError("maxlength")) {
+					<mat-error i18n="@@pa.create.referenceMaxLength"
+						>Reference must not exceed 100 characters.</mat-error
+					>
+					}
+				</mat-form-field>
+
+				<mat-card-actions align="end">
+					<a
+						mat-button
+						routerLink="/processing-activities"
+						type="button"
+						i18n="@@common.cancel"
+						>Cancel</a
+					>
+					<button
+						mat-flat-button
+						type="submit"
+						[disabled]="saving()"
+						i18n="@@common.create"
+					>
+						Create
+					</button>
+				</mat-card-actions>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</section>

@@ -36,6 +36,11 @@ export class MainMenuComponent {
 			route: '/organizations',
 		},
 		{ label: $localize`:@@app.menu.people:People`, icon: 'people', route: '/people' },
+		{
+			label: $localize`:@@app.menu.processingActivities:Processing Activities`,
+			icon: 'assignment',
+			route: '/processing-activities',
+		},
 	];
 	navigationLinks = [
 		{
