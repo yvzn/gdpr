@@ -19,7 +19,10 @@
 
 	<mat-card appearance="outlined">
 		<mat-card-header>
-			<mat-card-title>{{ org.name || unnamedOrg }}</mat-card-title>
+			<mat-card-title class="organization-detail__card-title">
+				<span i18n="@@org.detail.editLabel">Edit</span>
+				<span class="organization-detail__card-title-value">"{{ org.name || unnamedOrg }}"</span>
+			</mat-card-title>
 			<mat-icon class="organization-detail__card-icon" aria-hidden="true">business</mat-icon>
 		</mat-card-header>
 

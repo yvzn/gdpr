@@ -69,6 +69,7 @@ export class ActivityEditComponent {
 	readonly error = this.store.selectSignal(selectError);
 	readonly loadingDetail = this.store.selectSignal(selectLoadingDetail);
 	readonly activity = this.store.selectSignal(selectSelectedActivity);
+	readonly unnamedActivity = $localize`:@@pa.unnamed:Untitled Activity`;
 
 	readonly activityForm = this.fb.group({
 		description: ['', [Validators.required, Validators.maxLength(500)]],

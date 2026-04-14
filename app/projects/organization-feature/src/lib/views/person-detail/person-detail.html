@@ -19,9 +19,11 @@
 
 	<mat-card appearance="outlined">
 		<mat-card-header>
-			<mat-card-title>
-				@if (isNewMode()) { <span i18n="@@person.detail.new">New Person</span> } @else { {{
-				store.selectedPerson()?.fullName || unnamedPerson }} }
+			<mat-card-title class="person-detail__card-title">
+				<span i18n="@@person.detail.editLabel">Edit</span>
+				<span class="person-detail__card-title-value"
+					>"{{ store.selectedPerson()?.fullName || unnamedPerson }}"</span
+				>
 			</mat-card-title>
 			<mat-icon class="person-detail__card-icon" aria-hidden="true">person</mat-icon>
 		</mat-card-header>

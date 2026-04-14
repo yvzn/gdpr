@@ -29,6 +29,22 @@
 	flex-shrink: 0;
 }
 
+.activity-edit__card-title {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	align-items: baseline;
+	gap: 6px;
+}
+
+.activity-edit__card-title-value {
+	display: block;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .activity-edit__form {
 	display: flex;
 	flex-direction: column;

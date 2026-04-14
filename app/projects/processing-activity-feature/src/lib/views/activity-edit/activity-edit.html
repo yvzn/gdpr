@@ -23,7 +23,10 @@
 
 	<mat-card appearance="outlined">
 		<mat-card-header>
-			<mat-card-title i18n="@@pa.edit.title">Edit Processing Activity</mat-card-title>
+			<mat-card-title class="activity-edit__card-title">
+				<span i18n="@@pa.edit.titlePrefix">Edit</span>
+				<span class="activity-edit__card-title-value">"{{ act.description || unnamedActivity }}"</span>
+			</mat-card-title>
 			<mat-icon class="activity-edit__card-icon" aria-hidden="true">edit_note</mat-icon>
 		</mat-card-header>
 
