@@ -20,6 +20,11 @@ export const processingActivityFeatureRoutes: Routes = [
 				loadComponent: () =>
 					import('./views/activity-create/activity-create').then((m) => m.ActivityCreateComponent),
 			},
+			{
+				path: ':id',
+				loadComponent: () =>
+					import('./views/activity-edit/activity-edit').then((m) => m.ActivityEditComponent),
+			},
 		],
 	},
 ];

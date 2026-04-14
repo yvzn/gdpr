@@ -30,7 +30,7 @@
 				i18n-aria-label="@@pa.list.addTooltip"
 			>
 				<mat-icon>add</mat-icon>
-				<span i18n="@@pa.list.add">New Activity</span>
+				<span i18n="@@pa.list.add">Add Activity</span>
 			</a>
 		</div>
 	</header>
@@ -59,38 +59,44 @@
 	<div class="activity-list__grid" role="list">
 		@for (activity of activities(); track activity.id) {
 		<div class="activity-list__card-wrapper" role="listitem">
-			<mat-card class="activity-list__card" appearance="outlined">
-				<mat-card-header>
-					<mat-card-title>{{ activity.description || unnamedActivity }}</mat-card-title>
-					<mat-card-subtitle>
-						@if (activity.reference) {
-						<span i18n="@@pa.list.ref">Ref:</span> {{ activity.reference }} } @else { ID: {{
-						activity.id }} }
-					</mat-card-subtitle>
-					<mat-icon class="activity-list__card-avatar" aria-hidden="true">assignment</mat-icon>
-				</mat-card-header>
-				<mat-card-content>
-					<div class="activity-list__card-details">
-						@if (activity.created) {
-						<mat-chip-set aria-label="Activity dates">
-							<mat-chip>
-								<mat-icon matChipAvatar>calendar_today</mat-icon>
-								<span i18n="@@pa.list.created">Created</span>: {{ activity.created | date :
-								"mediumDate" }}
-							</mat-chip>
-						</mat-chip-set>
-						} @if (activity.updated && activity.updated !== activity.created) {
-						<div class="activity-list__detail-item">
-							<mat-icon class="activity-list__detail-icon">update</mat-icon>
-							<span
-								><span i18n="@@pa.list.updated">Updated</span>: {{ activity.updated | date :
-								"mediumDate" }}</span
-							>
+			<a
+				class="activity-list__card-link"
+				[routerLink]="['/processing-activities', activity.id]"
+				[attr.aria-label]="(activity.description || unnamedActivity)"
+			>
+				<mat-card class="activity-list__card" appearance="outlined">
+					<mat-card-header>
+						<mat-card-title>{{ activity.description || unnamedActivity }}</mat-card-title>
+						<mat-card-subtitle>
+							@if (activity.reference) {
+							<span i18n="@@pa.list.ref">Ref:</span> {{ activity.reference }} } @else { ID: {{
+							activity.id }} }
+						</mat-card-subtitle>
+						<mat-icon class="activity-list__card-avatar" aria-hidden="true">assignment</mat-icon>
+					</mat-card-header>
+					<mat-card-content>
+						<div class="activity-list__card-details">
+							@if (activity.created) {
+							<mat-chip-set aria-label="Activity dates">
+								<mat-chip>
+									<mat-icon matChipAvatar>calendar_today</mat-icon>
+									<span i18n="@@pa.list.created">Created</span>: {{ activity.created | date :
+									"mediumDate" }}
+								</mat-chip>
+							</mat-chip-set>
+							} @if (activity.updated && activity.updated !== activity.created) {
+							<div class="activity-list__detail-item">
+								<mat-icon class="activity-list__detail-icon">update</mat-icon>
+								<span
+									><span i18n="@@pa.list.updated">Updated</span>: {{ activity.updated | date :
+									"mediumDate" }}</span
+								>
+							</div>
+							}
 						</div>
-						}
-					</div>
-				</mat-card-content>
-			</mat-card>
+					</mat-card-content>
+				</mat-card>
+			</a>
 		</div>
 		}
 	</div>

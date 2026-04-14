@@ -1,10 +1,12 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { ProcessingActivity } from '../models/processing-activity.model';
+import { ProcessingActivity, ProcessingActivityDetail } from '../models/processing-activity.model';
 import { ProcessingActivityActions } from './processing-activity.actions';
 
 export interface ProcessingActivityState {
 	activities: ProcessingActivity[];
+	selectedActivity: ProcessingActivityDetail | null;
 	loading: boolean;
+	loadingDetail: boolean;
 	saving: boolean;
 	error: string | null;
 	filter: string;
@@ -14,7 +16,9 @@ export interface ProcessingActivityState {
 
 const initialState: ProcessingActivityState = {
 	activities: [],
+	selectedActivity: null,
 	loading: false,
+	loadingDetail: false,
 	saving: false,
 	error: null,
 	filter: '',
@@ -41,6 +45,22 @@ export const processingActivityFeature = createFeature({
 			loading: false,
 			error,
 		})),
+		on(ProcessingActivityActions.loadActivity, (state) => ({
+			...state,
+			loadingDetail: true,
+			selectedActivity: null,
+			error: null,
+		})),
+		on(ProcessingActivityActions.loadActivitySuccess, (state, { activity }) => ({
+			...state,
+			selectedActivity: activity,
+			loadingDetail: false,
+		})),
+		on(ProcessingActivityActions.loadActivityFailure, (state, { error }) => ({
+			...state,
+			loadingDetail: false,
+			error,
+		})),
 		on(ProcessingActivityActions.createActivity, (state) => ({
 			...state,
 			saving: true,
@@ -51,6 +71,20 @@ export const processingActivityFeature = createFeature({
 			saving: false,
 		})),
 		on(ProcessingActivityActions.createActivityFailure, (state, { error }) => ({
+			...state,
+			saving: false,
+			error,
+		})),
+		on(ProcessingActivityActions.updateActivity, (state) => ({
+			...state,
+			saving: true,
+			error: null,
+		})),
+		on(ProcessingActivityActions.updateActivitySuccess, (state) => ({
+			...state,
+			saving: false,
+		})),
+		on(ProcessingActivityActions.updateActivityFailure, (state, { error }) => ({
 			...state,
 			saving: false,
 			error,

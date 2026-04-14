@@ -75,4 +75,62 @@ export class ProcessingActivityEffects {
 			map(() => ProcessingActivityActions.loadActivities()),
 		),
 	);
+
+	loadActivity$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(ProcessingActivityActions.loadActivity),
+			switchMap(({ id }) =>
+				this.service.getById(id).pipe(
+					map((activity) => ProcessingActivityActions.loadActivitySuccess({ activity })),
+					catchError(() =>
+						of(
+							ProcessingActivityActions.loadActivityFailure({
+								error: $localize`:@@pa.error.load:Failed to load processing activity.`,
+							}),
+						),
+					),
+				),
+			),
+		),
+	);
+
+	updateActivity$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(ProcessingActivityActions.updateActivity),
+			exhaustMap(({ payload }) =>
+				this.service.update(payload).pipe(
+					map(() => ProcessingActivityActions.updateActivitySuccess()),
+					catchError(() =>
+						of(
+							ProcessingActivityActions.updateActivityFailure({
+								error: $localize`:@@pa.error.update:Failed to update processing activity.`,
+							}),
+						),
+					),
+				),
+			),
+		),
+	);
+
+	updateActivitySuccess$ = createEffect(
+		() =>
+			this.actions$.pipe(
+				ofType(ProcessingActivityActions.updateActivitySuccess),
+				tap(() => {
+					this.snackBar.open(
+						$localize`:@@pa.edit.success:Processing activity updated successfully.`,
+						$localize`:@@common.dismiss:Dismiss`,
+					);
+					this.router.navigate(['/processing-activities']);
+				}),
+			),
+		{ dispatch: false },
+	);
+
+	reloadAfterUpdate$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(ProcessingActivityActions.updateActivitySuccess),
+			map(() => ProcessingActivityActions.loadActivities()),
+		),
+	);
 }

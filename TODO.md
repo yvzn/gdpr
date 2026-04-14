@@ -1,0 +1,5 @@
+- routes organization (import)
+- home page = dashboard + list of activities
+- page vide (no content) => prompt to create first person
+- activity: key people selector
+- types and categories

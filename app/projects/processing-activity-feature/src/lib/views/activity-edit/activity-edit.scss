@@ -1,0 +1,157 @@
+.activity-edit {
+	padding: 24px;
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+.activity-edit__back-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	text-decoration: none;
+	color: var(--mat-sys-primary);
+	margin-bottom: 16px;
+	font-size: 0.875rem;
+
+	&:focus-visible {
+		outline: 2px solid var(--mat-sys-primary);
+		outline-offset: 2px;
+		border-radius: 4px;
+	}
+}
+
+.activity-edit__card-icon {
+	font-size: 32px;
+	width: 32px;
+	height: 32px;
+	color: var(--mat-sys-primary);
+	margin-left: auto;
+	flex-shrink: 0;
+}
+
+.activity-edit__form {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding-top: 16px;
+}
+
+.activity-edit__tabs {
+	min-height: 300px;
+}
+
+.activity-edit__tab-content {
+	padding: 24px 8px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.activity-edit__full-width {
+	width: 100%;
+}
+
+.activity-edit__collection-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 8px;
+
+	h3 {
+		margin: 0;
+		font-size: 1.1rem;
+	}
+}
+
+.activity-edit__empty {
+	text-align: center;
+	color: var(--mat-sys-on-surface-variant);
+	padding: 24px 0;
+	margin: 0;
+}
+
+.activity-edit__item {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	padding: 8px;
+	border-radius: 8px;
+	background: var(--mat-sys-surface-container-low);
+
+	&--multi {
+		flex-direction: column;
+		position: relative;
+		padding-right: 48px;
+	}
+}
+
+.activity-edit__item-row {
+	display: flex;
+	gap: 8px;
+	width: 100%;
+}
+
+.activity-edit__item-field {
+	flex: 1;
+}
+
+.activity-edit__item-delete {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+}
+
+.activity-edit__badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	background: var(--mat-sys-primary);
+	color: var(--mat-sys-on-primary);
+	font-size: 0.75rem;
+	margin-left: 6px;
+	padding: 0 6px;
+}
+
+mat-card {
+	background-color: var(--mat-sys-surface-container-lowest);
+}
+
+mat-card-actions {
+	gap: 8px;
+}
+
+mat-progress-bar {
+	margin-bottom: 16px;
+}
+
+mat-tab-group ::ng-deep .mat-mdc-tab .mdc-tab__content .mdc-tab__text-label {
+	gap: 6px;
+}
+
+@media (max-width: 599px) {
+	.activity-edit {
+		padding: 16px;
+	}
+
+	.activity-edit__item {
+		flex-direction: column;
+
+		&--multi {
+			padding-right: 8px;
+			padding-top: 40px;
+		}
+	}
+
+	.activity-edit__item-row {
+		flex-direction: column;
+	}
+
+	.activity-edit__collection-header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+}

@@ -1,0 +1,597 @@
+<section class="activity-edit">
+	<a
+		routerLink="/processing-activities"
+		class="activity-edit__back-link"
+		aria-label="Back to processing activities list"
+		i18n-aria-label="@@pa.edit.backAriaLabel"
+	>
+		<mat-icon>arrow_back</mat-icon>
+		<span i18n="@@pa.edit.back">Back to Processing Activities</span>
+	</a>
+
+	@if (error(); as errorMsg) {
+	<lib-pa-error-banner [message]="errorMsg" (retried)="retry()" />
+	} @if (loadingDetail()) {
+	<lib-pa-skeleton-card [count]="1" />
+	} @else if (activity(); as act) { @if (saving()) {
+	<mat-progress-bar
+		mode="indeterminate"
+		aria-label="Saving processing activity"
+		i18n-aria-label="@@pa.edit.savingAriaLabel"
+	/>
+	}
+
+	<mat-card appearance="outlined">
+		<mat-card-header>
+			<mat-card-title i18n="@@pa.edit.title">Edit Processing Activity</mat-card-title>
+			<mat-icon class="activity-edit__card-icon" aria-hidden="true">edit_note</mat-icon>
+		</mat-card-header>
+
+		<mat-card-content>
+			<form [formGroup]="activityForm" (ngSubmit)="onSubmit()" class="activity-edit__form">
+				<mat-tab-group animationDuration="200ms" class="activity-edit__tabs">
+					<!-- Tab 1: General Info -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>info</mat-icon>
+							<span i18n="@@pa.edit.tab.general">General</span>
+						</ng-template>
+
+						<div class="activity-edit__tab-content">
+							<mat-form-field appearance="outline" class="activity-edit__full-width">
+								<mat-label i18n="@@pa.edit.descriptionLabel">Description</mat-label>
+								<textarea
+									matInput
+									formControlName="description"
+									rows="4"
+									placeholder="Describe the processing activity..."
+									i18n-placeholder="@@pa.edit.descriptionPlaceholder"
+									aria-label="Processing activity description"
+									i18n-aria-label="@@pa.edit.descriptionLabel"
+								></textarea>
+								<mat-hint align="end"
+									>{{ activityForm.get("description")?.value?.length || 0 }} / 500</mat-hint
+								>
+								@if ( activityForm.get("description")?.hasError("required") &&
+								activityForm.get("description")?.touched ) {
+								<mat-error i18n="@@pa.edit.descriptionRequired">Description is required.</mat-error>
+								} @if (activityForm.get("description")?.hasError("maxlength")) {
+								<mat-error i18n="@@pa.edit.descriptionMaxLength"
+									>Description must not exceed 500 characters.</mat-error
+								>
+								}
+							</mat-form-field>
+
+							<mat-form-field appearance="outline" class="activity-edit__full-width">
+								<mat-label i18n="@@pa.edit.referenceLabel">Reference</mat-label>
+								<input
+									matInput
+									formControlName="reference"
+									placeholder="Enter a reference code (optional)"
+									i18n-placeholder="@@pa.edit.referencePlaceholder"
+									aria-label="Processing activity reference"
+									i18n-aria-label="@@pa.edit.referenceLabel"
+								/>
+								@if (activityForm.get("reference")?.hasError("maxlength")) {
+								<mat-error i18n="@@pa.edit.referenceMaxLength"
+									>Reference must not exceed 100 characters.</mat-error
+								>
+								}
+							</mat-form-field>
+						</div>
+					</mat-tab>
+
+					<!-- Tab 2: Purposes -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>flag</mat-icon>
+							<span i18n="@@pa.edit.tab.purposes">Purposes</span>
+							@if (purposes.length > 0) {
+							<span class="activity-edit__badge">{{ purposes.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="purposes">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.purposesTitle">Purposes of Processing</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addPurpose()"
+									aria-label="Add purpose"
+									i18n-aria-label="@@pa.edit.addPurposeAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addPurpose">Add Purpose</span>
+								</button>
+							</div>
+
+							@if (purposes.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noPurposes">No purposes added yet.</p>
+							} @for (purpose of purposes.controls; track purpose; let i = $index) {
+							<div class="activity-edit__item" [formGroupName]="i">
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.purposeDescription">Purpose description</mat-label>
+									<input
+										matInput
+										formControlName="description"
+										placeholder="Describe the purpose..."
+										i18n-placeholder="@@pa.edit.purposePlaceholder"
+									/>
+									@if (purpose.get("description")?.hasError("required") &&
+									purpose.get("description")?.touched) {
+									<mat-error i18n="@@pa.edit.purposeRequired">Description is required.</mat-error>
+									}
+								</mat-form-field>
+								<button
+									mat-icon-button
+									type="button"
+									(click)="removePurpose(i)"
+									matTooltip="Remove purpose"
+									i18n-matTooltip="@@pa.edit.removePurpose"
+									aria-label="Remove purpose"
+									i18n-aria-label="@@pa.edit.removePurpose"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+
+					<!-- Tab 3: Personal Data -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>person</mat-icon>
+							<span i18n="@@pa.edit.tab.personalData">Personal Data</span>
+							@if (personalData.length > 0) {
+							<span class="activity-edit__badge">{{ personalData.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="personalData">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.personalDataTitle">Categories of Personal Data</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addPersonalData()"
+									aria-label="Add personal data category"
+									i18n-aria-label="@@pa.edit.addPersonalDataAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addPersonalData">Add Category</span>
+								</button>
+							</div>
+
+							@if (personalData.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noPersonalData">
+								No personal data categories added yet.
+							</p>
+							} @for (pd of personalData.controls; track pd; let i = $index) {
+							<div class="activity-edit__item" [formGroupName]="i">
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.pdDescription">Description</mat-label>
+									<input
+										matInput
+										formControlName="description"
+										placeholder="Describe the data category..."
+										i18n-placeholder="@@pa.edit.pdDescriptionPlaceholder"
+									/>
+									@if (pd.get("description")?.hasError("required") &&
+									pd.get("description")?.touched) {
+									<mat-error i18n="@@pa.edit.pdDescriptionRequired"
+										>Description is required.</mat-error
+									>
+									}
+								</mat-form-field>
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.storagePeriod">Storage period</mat-label>
+									<input
+										matInput
+										formControlName="storagePeriod"
+										placeholder="e.g. 5 years"
+										i18n-placeholder="@@pa.edit.storagePeriodPlaceholder"
+									/>
+								</mat-form-field>
+								<button
+									mat-icon-button
+									type="button"
+									(click)="removePersonalData(i)"
+									matTooltip="Remove category"
+									i18n-matTooltip="@@pa.edit.removePersonalData"
+									aria-label="Remove personal data category"
+									i18n-aria-label="@@pa.edit.removePersonalData"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+
+					<!-- Tab 4: Sensitive Data -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>security</mat-icon>
+							<span i18n="@@pa.edit.tab.sensitiveData">Sensitive Data</span>
+							@if (sensitiveData.length > 0) {
+							<span class="activity-edit__badge">{{ sensitiveData.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="sensitiveData">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.sensitiveDataTitle">Categories of Sensitive Data</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addSensitiveData()"
+									aria-label="Add sensitive data category"
+									i18n-aria-label="@@pa.edit.addSensitiveDataAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addSensitiveData">Add Category</span>
+								</button>
+							</div>
+
+							@if (sensitiveData.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noSensitiveData">
+								No sensitive data categories added yet.
+							</p>
+							} @for (sd of sensitiveData.controls; track sd; let i = $index) {
+							<div class="activity-edit__item" [formGroupName]="i">
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.sdDescription">Description</mat-label>
+									<input
+										matInput
+										formControlName="description"
+										placeholder="Describe the sensitive data category..."
+										i18n-placeholder="@@pa.edit.sdDescriptionPlaceholder"
+									/>
+									@if (sd.get("description")?.hasError("required") &&
+									sd.get("description")?.touched) {
+									<mat-error i18n="@@pa.edit.sdDescriptionRequired"
+										>Description is required.</mat-error
+									>
+									}
+								</mat-form-field>
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.storagePeriod">Storage period</mat-label>
+									<input
+										matInput
+										formControlName="storagePeriod"
+										placeholder="e.g. 5 years"
+										i18n-placeholder="@@pa.edit.storagePeriodPlaceholder"
+									/>
+								</mat-form-field>
+								<button
+									mat-icon-button
+									type="button"
+									(click)="removeSensitiveData(i)"
+									matTooltip="Remove category"
+									i18n-matTooltip="@@pa.edit.removeSensitiveData"
+									aria-label="Remove sensitive data category"
+									i18n-aria-label="@@pa.edit.removeSensitiveData"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+
+					<!-- Tab 5: Data Subjects -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>groups</mat-icon>
+							<span i18n="@@pa.edit.tab.dataSubjects">Data Subjects</span>
+							@if (dataSubjects.length > 0) {
+							<span class="activity-edit__badge">{{ dataSubjects.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="dataSubjects">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.dataSubjectsTitle">Categories of Data Subjects</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addDataSubject()"
+									aria-label="Add data subject category"
+									i18n-aria-label="@@pa.edit.addDataSubjectAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addDataSubject">Add Category</span>
+								</button>
+							</div>
+
+							@if (dataSubjects.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noDataSubjects">
+								No data subject categories added yet.
+							</p>
+							} @for (ds of dataSubjects.controls; track ds; let i = $index) {
+							<div class="activity-edit__item" [formGroupName]="i">
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.dsType">Type</mat-label>
+									<input
+										matInput
+										formControlName="type"
+										placeholder="e.g. Employees, Customers..."
+										i18n-placeholder="@@pa.edit.dsTypePlaceholder"
+									/>
+									@if (ds.get("type")?.hasError("required") && ds.get("type")?.touched) {
+									<mat-error i18n="@@pa.edit.dsTypeRequired">Type is required.</mat-error>
+									}
+								</mat-form-field>
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.dsDescription">Description</mat-label>
+									<input
+										matInput
+										formControlName="description"
+										placeholder="Additional details..."
+										i18n-placeholder="@@pa.edit.dsDescriptionPlaceholder"
+									/>
+								</mat-form-field>
+								<button
+									mat-icon-button
+									type="button"
+									(click)="removeDataSubject(i)"
+									matTooltip="Remove data subject"
+									i18n-matTooltip="@@pa.edit.removeDataSubject"
+									aria-label="Remove data subject category"
+									i18n-aria-label="@@pa.edit.removeDataSubject"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+
+					<!-- Tab 6: Recipients -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>send</mat-icon>
+							<span i18n="@@pa.edit.tab.recipients">Recipients</span>
+							@if (recipients.length > 0) {
+							<span class="activity-edit__badge">{{ recipients.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="recipients">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.recipientsTitle">Recipients</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addRecipient()"
+									aria-label="Add recipient"
+									i18n-aria-label="@@pa.edit.addRecipientAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addRecipient">Add Recipient</span>
+								</button>
+							</div>
+
+							@if (recipients.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noRecipients">
+								No recipients added yet.
+							</p>
+							} @for (r of recipients.controls; track r; let i = $index) {
+							<div class="activity-edit__item" [formGroupName]="i">
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.recipientType">Type</mat-label>
+									<input
+										matInput
+										formControlName="type"
+										placeholder="e.g. Internal, External, Sub-processor..."
+										i18n-placeholder="@@pa.edit.recipientTypePlaceholder"
+									/>
+									@if (r.get("type")?.hasError("required") && r.get("type")?.touched) {
+									<mat-error i18n="@@pa.edit.recipientTypeRequired">Type is required.</mat-error>
+									}
+								</mat-form-field>
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.recipientDescription">Description</mat-label>
+									<input
+										matInput
+										formControlName="description"
+										placeholder="Describe the recipient..."
+										i18n-placeholder="@@pa.edit.recipientDescriptionPlaceholder"
+									/>
+								</mat-form-field>
+								<button
+									mat-icon-button
+									type="button"
+									(click)="removeRecipient(i)"
+									matTooltip="Remove recipient"
+									i18n-matTooltip="@@pa.edit.removeRecipient"
+									aria-label="Remove recipient"
+									i18n-aria-label="@@pa.edit.removeRecipient"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+
+					<!-- Tab 7: International Recipients -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>public</mat-icon>
+							<span i18n="@@pa.edit.tab.internationalRecipients">International</span>
+							@if (internationalRecipients.length > 0) {
+							<span class="activity-edit__badge">{{ internationalRecipients.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="internationalRecipients">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.internationalRecipientsTitle">International Recipients</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addInternationalRecipient()"
+									aria-label="Add international recipient"
+									i18n-aria-label="@@pa.edit.addIntlRecipientAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addIntlRecipient">Add Recipient</span>
+								</button>
+							</div>
+
+							@if (internationalRecipients.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noIntlRecipients">
+								No international recipients added yet.
+							</p>
+							} @for ( ir of internationalRecipients.controls; track ir; let i = $index ) {
+							<div class="activity-edit__item activity-edit__item--multi" [formGroupName]="i">
+								<div class="activity-edit__item-row">
+									<mat-form-field appearance="outline" class="activity-edit__item-field">
+										<mat-label i18n="@@pa.edit.intlDescription">Description</mat-label>
+										<input
+											matInput
+											formControlName="description"
+											placeholder="Describe the recipient..."
+											i18n-placeholder="@@pa.edit.intlDescriptionPlaceholder"
+										/>
+										@if (ir.get("description")?.hasError("required") &&
+										ir.get("description")?.touched) {
+										<mat-error i18n="@@pa.edit.intlDescriptionRequired"
+											>Description is required.</mat-error
+										>
+										}
+									</mat-form-field>
+									<mat-form-field appearance="outline" class="activity-edit__item-field">
+										<mat-label i18n="@@pa.edit.intlCountry">Country</mat-label>
+										<input
+											matInput
+											formControlName="country"
+											placeholder="Country of transfer"
+											i18n-placeholder="@@pa.edit.intlCountryPlaceholder"
+										/>
+									</mat-form-field>
+								</div>
+								<div class="activity-edit__item-row">
+									<mat-form-field appearance="outline" class="activity-edit__item-field">
+										<mat-label i18n="@@pa.edit.intlGuarantees">Guarantees</mat-label>
+										<input
+											matInput
+											formControlName="guarantees"
+											placeholder="Comma-separated list of guarantees"
+											i18n-placeholder="@@pa.edit.intlGuaranteesPlaceholder"
+										/>
+									</mat-form-field>
+									<mat-form-field appearance="outline" class="activity-edit__item-field">
+										<mat-label i18n="@@pa.edit.intlDocumentation">Documentation</mat-label>
+										<input
+											matInput
+											formControlName="documentation"
+											placeholder="Reference to documentation"
+											i18n-placeholder="@@pa.edit.intlDocumentationPlaceholder"
+										/>
+									</mat-form-field>
+								</div>
+								<button
+									mat-icon-button
+									type="button"
+									class="activity-edit__item-delete"
+									(click)="removeInternationalRecipient(i)"
+									matTooltip="Remove international recipient"
+									i18n-matTooltip="@@pa.edit.removeIntlRecipient"
+									aria-label="Remove international recipient"
+									i18n-aria-label="@@pa.edit.removeIntlRecipient"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+
+					<!-- Tab 8: Security Measures -->
+					<mat-tab>
+						<ng-template mat-tab-label>
+							<mat-icon>shield</mat-icon>
+							<span i18n="@@pa.edit.tab.securityMeasures">Security</span>
+							@if (securityMeasures.length > 0) {
+							<span class="activity-edit__badge">{{ securityMeasures.length }}</span>
+							}
+						</ng-template>
+
+						<div class="activity-edit__tab-content" formArrayName="securityMeasures">
+							<div class="activity-edit__collection-header">
+								<h3 i18n="@@pa.edit.securityMeasuresTitle">Security Measures</h3>
+								<button
+									mat-button
+									type="button"
+									(click)="addSecurityMeasure()"
+									aria-label="Add security measure"
+									i18n-aria-label="@@pa.edit.addSecurityMeasureAriaLabel"
+								>
+									<mat-icon>add</mat-icon>
+									<span i18n="@@pa.edit.addSecurityMeasure">Add Measure</span>
+								</button>
+							</div>
+
+							@if (securityMeasures.length === 0) {
+							<p class="activity-edit__empty" i18n="@@pa.edit.noSecurityMeasures">
+								No security measures added yet.
+							</p>
+							} @for (sm of securityMeasures.controls; track sm; let i = $index) {
+							<div class="activity-edit__item" [formGroupName]="i">
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.smType">Type</mat-label>
+									<input
+										matInput
+										formControlName="type"
+										placeholder="e.g. Encryption, Access control..."
+										i18n-placeholder="@@pa.edit.smTypePlaceholder"
+									/>
+									@if (sm.get("type")?.hasError("required") && sm.get("type")?.touched) {
+									<mat-error i18n="@@pa.edit.smTypeRequired">Type is required.</mat-error>
+									}
+								</mat-form-field>
+								<mat-form-field appearance="outline" class="activity-edit__item-field">
+									<mat-label i18n="@@pa.edit.smDescription">Description</mat-label>
+									<input
+										matInput
+										formControlName="description"
+										placeholder="Describe the measure..."
+										i18n-placeholder="@@pa.edit.smDescriptionPlaceholder"
+									/>
+								</mat-form-field>
+								<button
+									mat-icon-button
+									type="button"
+									(click)="removeSecurityMeasure(i)"
+									matTooltip="Remove security measure"
+									i18n-matTooltip="@@pa.edit.removeSecurityMeasure"
+									aria-label="Remove security measure"
+									i18n-aria-label="@@pa.edit.removeSecurityMeasure"
+								>
+									<mat-icon>delete</mat-icon>
+								</button>
+							</div>
+							}
+						</div>
+					</mat-tab>
+				</mat-tab-group>
+
+				<mat-divider />
+
+				<mat-card-actions align="end">
+					<a mat-button routerLink="/processing-activities" type="button" i18n="@@common.cancel"
+						>Cancel</a
+					>
+					<button mat-flat-button type="submit" [disabled]="saving()" i18n="@@common.save">
+						Save
+					</button>
+				</mat-card-actions>
+			</form>
+		</mat-card-content>
+	</mat-card>
+	}
+</section>

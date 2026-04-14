@@ -4,6 +4,8 @@ import { processingActivityFeature } from './processing-activity.reducer';
 export const {
 	selectActivities,
 	selectLoading,
+	selectLoadingDetail,
+	selectSelectedActivity,
 	selectSaving,
 	selectError,
 	selectFilter,
