@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {
@@ -57,6 +57,7 @@ interface PersonRole {
 		ErrorBannerComponent,
 	],
 	templateUrl: './organization-detail.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './organization-detail.scss',
 })
 export class OrganizationDetailComponent {

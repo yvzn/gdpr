@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed, OnInit } from '@angular/core';
+import { Component, inject, signal, computed, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
 	MAT_DIALOG_DATA,
@@ -36,6 +36,7 @@ interface PeoplePickerDialogData {
 		MatButton,
 	],
 	templateUrl: './people-picker-dialog.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './people-picker-dialog.scss',
 })
 export class PeoplePickerDialogComponent implements OnInit {

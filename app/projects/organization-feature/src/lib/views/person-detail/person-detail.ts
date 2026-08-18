@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { email, form, FormField } from '@angular/forms/signals';
 import {
@@ -52,6 +52,7 @@ interface PersonDetails {
 		ErrorBannerComponent,
 	],
 	templateUrl: './person-detail.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './person-detail.scss',
 })
 export class PersonDetailComponent implements OnInit {

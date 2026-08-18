@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
 	MatCard,
@@ -58,6 +58,7 @@ import { ErrorBannerComponent } from '../../components/error-banner/error-banner
 		ErrorBannerComponent,
 	],
 	templateUrl: './activity-list.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './activity-list.scss',
 })
 export class ActivityListComponent implements OnInit {

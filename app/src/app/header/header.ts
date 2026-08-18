@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, output, ChangeDetectionStrategy } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
@@ -11,6 +11,7 @@ import { getLocale, setLocale, SupportedLocale } from '../i18n/locale';
 	selector: 'app-header',
 	imports: [MatToolbar, MatIcon, MatIconButton, MatMenu, MatMenuItem, MatMenuTrigger, RouterLink],
 	templateUrl: './header.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './header.scss',
 })
 export class HeaderComponent {

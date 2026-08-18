@@ -1,4 +1,4 @@
-import { Component, viewChild } from '@angular/core';
+import { Component, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatSidenav, MatSidenavContainer, MatSidenavContent } from '@angular/material/sidenav';
 import '@angular/localize';
@@ -17,6 +17,7 @@ import { MainMenuComponent } from './main-menu/main-menu';
 		MainMenuComponent,
 	],
 	templateUrl: './app.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './app.scss',
 })
 export class App {

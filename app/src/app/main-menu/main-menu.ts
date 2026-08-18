@@ -1,4 +1,4 @@
-import { Component, output } from '@angular/core';
+import { Component, output, ChangeDetectionStrategy } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import {
@@ -24,6 +24,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 		RouterLinkActive,
 	],
 	templateUrl: './main-menu.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './main-menu.scss',
 })
 export class MainMenuComponent {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import {
@@ -41,6 +41,7 @@ import { ErrorBannerComponent } from '../../components/error-banner/error-banner
 		ErrorBannerComponent,
 	],
 	templateUrl: './activity-create.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './activity-create.scss',
 })
 export class ActivityCreateComponent {

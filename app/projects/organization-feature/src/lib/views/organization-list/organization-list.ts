@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {
 	MatCard,
@@ -40,6 +40,7 @@ import { ErrorBannerComponent } from '../../components/error-banner/error-banner
 		ErrorBannerComponent,
 	],
 	templateUrl: './organization-list.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './organization-list.scss',
 })
 export class OrganizationListComponent {

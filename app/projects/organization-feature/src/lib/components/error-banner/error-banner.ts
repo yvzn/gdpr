@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
 
@@ -7,6 +7,7 @@ import { MatButton } from '@angular/material/button';
 	standalone: true,
 	imports: [MatIcon, MatButton],
 	templateUrl: './error-banner.html',
+	changeDetection: ChangeDetectionStrategy.Eager,
 	styleUrl: './error-banner.scss',
 })
 export class ErrorBannerComponent {
