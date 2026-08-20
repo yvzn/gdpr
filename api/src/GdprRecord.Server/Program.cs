@@ -14,13 +14,17 @@ builder.Services.AddMediator(options => {
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSpaStaticFiles(options =>
+{
+	options.RootPath = "wwwroot";
+});
+
+// Configure the HTTP request pipeline.
 var app = builder.Build();
 
 app.UseOrganizationFeature();
 app.UseProcessingActivityFeature();
 
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
@@ -31,7 +35,16 @@ else
 	app.UseHttpsRedirection();
 }
 
+app.UseStaticFiles();
+app.UseSpaStaticFiles();
+
 app.MapControllers();
+app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"), spaApp =>
+{
+	spaApp.UseSpa(spa =>
+	{
+		spa.Options.SourcePath = "wwwroot";
+	});
+});
 
-app.Run();
-
+await app.RunAsync();
