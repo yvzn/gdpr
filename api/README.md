@@ -2,6 +2,19 @@
 
 TODO
 
+## Database connection strings
+
+The API uses one SQLite database for each feature. The databases are stored in `%LOCALAPPDATA%/GdprRecord/` by default. Add required connection strings to `appsettings.json` to override the default database locations:
+
+```json
+{
+	"ConnectionStrings": {
+		"OrganizationDb": "Data Source=C:/data/GdprRecord/Organization.db",
+		"ProcessingActivityDb": "Data Source=C:/data/GdprRecord/ProcessingActivity.db"
+	}
+}
+```
+
 ## EntityFramework migrations
 
 Install EntityFramework tools

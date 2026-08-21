@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using GdprRecord.Server.Feature.Organization.Infrastructure;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Mediator;
@@ -13,9 +14,16 @@ public interface IOrganizationFeature { }
 
 public static class IServicesCollectionExtensions
 {
-	public static IServiceCollection AddOrganizationFeature(this IServiceCollection services)
+	public static IServiceCollection AddOrganizationFeature(this IServiceCollection services, IConfiguration configuration)
 	{
 		TypeAdapterConfig.GlobalSettings.Scan(typeof(IOrganizationFeature).Assembly);
+
+		var connectionString = configuration.GetConnectionString("OrganizationDb");
+		if (string.IsNullOrWhiteSpace(connectionString))
+		{
+			Directory.CreateDirectory(OrganizationContext.DefaultDbDirectory);
+			connectionString = $"Data Source={OrganizationContext.DefaultDbPath}";
+		}
 
 		services.AddControllers()
 			.AddApplicationPart(typeof(IOrganizationFeature).Assembly);
@@ -24,7 +32,7 @@ public static class IServicesCollectionExtensions
 		services.AddValidatorsFromAssemblyContaining<IOrganizationFeature>();
 
 		services.AddDbContext<OrganizationContext>(
-			options => options.UseSqlite($"Data Source={OrganizationContext.DbPath}"));
+			options => options.UseSqlite(connectionString));
 
 		services.AddScoped<OrganizationDbInitializer>();
 

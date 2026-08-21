@@ -19,10 +19,10 @@ public class OrganizationContext(DbContextOptions<OrganizationContext> options) 
 			.ToTable(nameof(Person));
 	}
 
-	public static string DbPath
-		=> Path.Join(DbDirectory, $"{nameof(Organization)}.db");
+	public static string DefaultDbPath
+		=> Path.Join(DefaultDbDirectory, $"{nameof(Organization)}.db");
 
-	public static string DbDirectory
+	public static string DefaultDbDirectory
 		=> Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "GdprRecord");
 }
 
@@ -30,10 +30,10 @@ public class OrganizationContextFactory : IDesignTimeDbContextFactory<Organizati
 {
 	public OrganizationContext CreateDbContext(string[] args)
 	{
-		Directory.CreateDirectory(OrganizationContext.DbDirectory);
+		Directory.CreateDirectory(OrganizationContext.DefaultDbDirectory);
 
 		var optionsBuilder = new DbContextOptionsBuilder<OrganizationContext>();
-		optionsBuilder.UseSqlite($"Data Source={OrganizationContext.DbPath}");
+		optionsBuilder.UseSqlite($"Data Source={OrganizationContext.DefaultDbPath}");
 
 		return new OrganizationContext(optionsBuilder.Options);
 	}

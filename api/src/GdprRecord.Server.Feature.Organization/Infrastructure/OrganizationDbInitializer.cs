@@ -7,8 +7,6 @@ internal class OrganizationDbInitializer(OrganizationContext context)
 {
 	internal async Task Init(CancellationToken cancellationToken = default)
 	{
-		Directory.CreateDirectory(OrganizationContext.DbDirectory);
-
 		await context.Database.MigrateAsync(cancellationToken);
 		await context.Database.EnsureCreatedAsync(cancellationToken);
 

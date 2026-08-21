@@ -4,8 +4,8 @@ using GdprRecord.Server.Feature.ProcessingActivity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddOrganizationFeature();
-builder.Services.AddProcessingActivityFeature();
+builder.Services.AddOrganizationFeature(builder.Configuration);
+builder.Services.AddProcessingActivityFeature(builder.Configuration);
 builder.Services.AddMediator(options => {
 	options.ServiceLifetime = ServiceLifetime.Scoped;
 	options.Assemblies = [typeof(IOrganizationFeature), typeof(IProcessingActivityFeature)];

@@ -43,10 +43,10 @@ public class ProcessingActivityContext(DbContextOptions<ProcessingActivityContex
 			.ToTable(nameof(SecurityMeasure));
 	}
 
-	public static string DbPath
-		=> Path.Join(DbDirectory, $"{nameof(ProcessingActivity)}.db");
+	public static string DefaultDbPath
+		=> Path.Join(DefaultDbDirectory, $"{nameof(ProcessingActivity)}.db");
 
-	public static string DbDirectory
+	public static string DefaultDbDirectory
 		=> Path.Join(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "GdprRecord");
 }
 
@@ -54,10 +54,10 @@ public class ProcessingActivityContextFactory : IDesignTimeDbContextFactory<Proc
 {
 	public ProcessingActivityContext CreateDbContext(string[] args)
 	{
-		Directory.CreateDirectory(ProcessingActivityContext.DbDirectory);
+		Directory.CreateDirectory(ProcessingActivityContext.DefaultDbDirectory);
 
 		var optionsBuilder = new DbContextOptionsBuilder<ProcessingActivityContext>();
-		optionsBuilder.UseSqlite($"Data Source={ProcessingActivityContext.DbPath}");
+		optionsBuilder.UseSqlite($"Data Source={ProcessingActivityContext.DefaultDbPath}");
 
 		return new ProcessingActivityContext(optionsBuilder.Options);
 	}
