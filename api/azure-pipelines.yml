@@ -47,7 +47,7 @@ stages:
               npm ci --legacy-peer-deps
               npm run build
             displayName: Build Angular app
-            workingDirectory: front
+            workingDirectory: app
 
           - script: |
               # Enable strict error handling and command echo for easier CI troubleshooting.
