@@ -1,5 +1,7 @@
 using GdprRecord.Server.Feature.Organization;
 using GdprRecord.Server.Feature.ProcessingActivity;
+using GdprRecord.Server;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,15 @@ var app = builder.Build();
 
 app.UseOrganizationFeature();
 app.UseProcessingActivityFeature();
+
+if (builder.Configuration.GetValue<bool>("DemoMode:Enabled"))
+{
+	app.UseMiddleware<DemoModeResetMiddleware>();
+}
+else
+{
+	app.Logger.LogInformation("Demo data reset skipped: DemoMode.Enabled is false.");
+}
 
 if (app.Environment.IsDevelopment())
 {
