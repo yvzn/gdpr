@@ -37,7 +37,7 @@
     "@angular/compiler-cli": "^22.1.2",
     "jsdom": "^29.0.0",
     "ng-packagr": "^22.1.1",
-    "oxfmt": "^0.63.0",
+    "oxfmt": "^0.73.0",
     "oxlint": "^1.57.0",
     "typescript": "~6.0.3",
     "vitest": "^4.1.11"
